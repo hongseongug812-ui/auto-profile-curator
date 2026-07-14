@@ -12,8 +12,14 @@ def _post(url: str, payload: dict, headers: dict | None = None) -> dict:
         return json.load(response)
 
 
+SUMMARY_PROMPT = (
+    "Summarize this GitHub repository in 2-3 concise sentences. "
+    "State what it does, its key features, and its tech stack if mentioned; no marketing language.\\n\\n"
+)
+
+
 def call_ollama(readme: str, model: str) -> str:
-    response = _post("http://127.0.0.1:11434/api/generate", {"model": model, "stream": False, "prompt": "Summarize this GitHub repository in one concise sentence. State what it does; no marketing language.\\n\\n" + readme})
+    response = _post("http://127.0.0.1:11434/api/generate", {"model": model, "stream": False, "prompt": SUMMARY_PROMPT + readme})
     return response["response"].strip()
 
 
@@ -21,7 +27,7 @@ def call_anthropic(readme: str, model: str) -> str:
     key = os.environ.get("ANTHROPIC_API_KEY")
     if not key:
         raise RuntimeError("ANTHROPIC_API_KEY is required when llm.provider is cloud")
-    response = _post("https://api.anthropic.com/v1/messages", {"model": model, "max_tokens": 80, "messages": [{"role": "user", "content": "Summarize this GitHub repository in one concise sentence.\\n\\n" + readme}]}, {"x-api-key": key, "anthropic-version": "2023-06-01"})
+    response = _post("https://api.anthropic.com/v1/messages", {"model": model, "max_tokens": 200, "messages": [{"role": "user", "content": SUMMARY_PROMPT + readme}]}, {"x-api-key": key, "anthropic-version": "2023-06-01"})
     return response["content"][0]["text"].strip()
 
 
