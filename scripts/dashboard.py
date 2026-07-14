@@ -140,12 +140,19 @@ def deploy() -> list[dict]:
         run("변경사항 스테이징", ["git", "add", "-A"])
         run("변경사항 커밋", ["git", "commit", "-m", "config: update via dashboard"])
 
-    if run("원격 저장소 확인", ["git", "fetch", "origin", "main"]).returncode != 0:
-        return log
-    if run("원격 변경사항 병합", ["git", "merge", "origin/main", "--no-edit", "-X", "theirs"]).returncode != 0:
-        return log
-    if run("프로필 저장소로 push", ["git", "push", "origin", "main"]).returncode != 0:
-        return log
+    # The hourly workflow can push to origin between our fetch and push, so retry
+    # the sync a few times before giving up (classic non-fast-forward race).
+    max_attempts = 3
+    for attempt in range(1, max_attempts + 1):
+        if run("원격 저장소 확인", ["git", "fetch", "origin", "main"]).returncode != 0:
+            return log
+        if run("원격 변경사항 병합", ["git", "merge", "origin/main", "--no-edit", "-X", "theirs"]).returncode != 0:
+            return log
+        push = run(f"프로필 저장소로 push{f' (재시도 {attempt}/{max_attempts})' if attempt > 1 else ''}", ["git", "push", "origin", "main"])
+        if push.returncode == 0:
+            break
+        if attempt == max_attempts:
+            return log
 
     repo_slug = remote_repo_slug("origin")
     if not repo_slug:
