@@ -100,8 +100,9 @@
 ### {{ group.year }}
 
 {% for item in group['items'] %}
-- **{{ item.title }}**{% if item.period %} <sub>{{ item.period }}</sub>{% endif %}{% if item.description %} — {{ item.description }}{% endif %}
+- **{{ item.title }}**{% if item.period %} <sub>{{ item.period }}</sub>{% endif %}{% if item.description %} — {{ item.description }}{% endif +%}
 {% endfor %}
+
 {% endfor %}
 {% endif %}
 

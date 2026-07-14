@@ -96,9 +96,17 @@
 
 ### 2026
 
-- **auto-profile-curator** <sub>2026.07</sub> — GitHub 사용자명 하나로 완성하는 자동 프로필 README 생성 도구- **llm-bench-dashboard** <sub>2026.07</sub> — Python 프로젝트- **hongseongug812-ui** <sub>2026.07</sub> — Python 프로젝트- **mc-devkit** <sub>2026.07</sub> — JavaScript 프로젝트### 2025
+- **auto-profile-curator** <sub>2026.07</sub> — GitHub 사용자명 하나로 완성하는 자동 프로필 README 생성 도구
+- **llm-bench-dashboard** <sub>2026.07</sub> — Python 프로젝트
+- **hongseongug812-ui** <sub>2026.07</sub> — Python 프로젝트
+- **mc-devkit** <sub>2026.07</sub> — JavaScript 프로젝트
 
-- **voxy** <sub>2025.12</sub> — 실시간 음성 번역 - **TFT_Game** <sub>2025.11</sub> — Unity ShaderLab 기반 TFT 스타일 전략 게임 프로젝트
+### 2025
+
+- **voxy** <sub>2025.12</sub> — 실시간 음성 번역 
+- **TFT_Game** <sub>2025.11</sub> — Unity ShaderLab 기반 TFT 스타일 전략 게임 프로젝트
+
+
 ---
 
 <div align="center"><sub>공개 저장소를 기반으로 자동 큐레이션 · 매시간 갱신</sub></div>
