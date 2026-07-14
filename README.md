@@ -36,6 +36,9 @@
 
 ## 기술 스택
 
+<div align="center">
+<a href="https://pytorch.org/"><img src="https://skillicons.dev/icons?i=pytorch&theme=dark" alt="PyTorch" title="PyTorch"></a><a href="https://aws.amazon.com/"><img src="https://skillicons.dev/icons?i=aws&theme=dark" alt="AWS" title="AWS"></a><a href="https://fastapi.tiangolo.com/"><img src="https://skillicons.dev/icons?i=fastapi&theme=dark" alt="FastAPI" title="FastAPI"></a><a href="https://spring.io/projects/spring-boot"><img src="https://skillicons.dev/icons?i=spring&theme=dark" alt="Spring Boot" title="Spring Boot"></a><a href="https://www.python.org/"><img src="https://skillicons.dev/icons?i=python&theme=dark" alt="Python" title="Python"></a><a href="https://www.java.com/"><img src="https://skillicons.dev/icons?i=java&theme=dark" alt="Java" title="Java"></a><a href="https://kotlinlang.org/"><img src="https://skillicons.dev/icons?i=kotlin&theme=dark" alt="Kotlin" title="Kotlin"></a><a href="https://nodejs.org/"><img src="https://skillicons.dev/icons?i=nodejs&theme=dark" alt="Node.js" title="Node.js"></a><a href="https://react.dev/"><img src="https://skillicons.dev/icons?i=react&theme=dark" alt="React" title="React"></a><a href="https://nextjs.org/"><img src="https://skillicons.dev/icons?i=next&theme=dark" alt="Next.js" title="Next.js"></a><a href="https://www.typescriptlang.org/"><img src="https://skillicons.dev/icons?i=ts&theme=dark" alt="TypeScript" title="TypeScript"></a><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://skillicons.dev/icons?i=js&theme=dark" alt="JavaScript" title="JavaScript"></a><a href="https://supabase.com/"><img src="https://skillicons.dev/icons?i=supabase&theme=dark" alt="Supabase" title="Supabase"></a><a href="https://www.postgresql.org/"><img src="https://skillicons.dev/icons?i=postgres&theme=dark" alt="PostgreSQL" title="PostgreSQL"></a><a href="https://www.mysql.com/"><img src="https://skillicons.dev/icons?i=mysql&theme=dark" alt="MySQL" title="MySQL"></a><a href="https://redis.io/"><img src="https://skillicons.dev/icons?i=redis&theme=dark" alt="Redis" title="Redis"></a></div>
+
 <table>
 <tr><td><b>AI & 클라우드</b></td><td><code>OpenAI</code> &nbsp;<code>LLM</code> &nbsp;<code>PyTorch</code> &nbsp;<code>Gemma</code> &nbsp;<code>AWS</code></td></tr><tr><td><b>백엔드</b></td><td><code>FastAPI</code> &nbsp;<code>Spring Boot</code> &nbsp;<code>Python</code> &nbsp;<code>Java</code> &nbsp;<code>Kotlin</code> &nbsp;<code>Node.js</code></td></tr><tr><td><b>프론트엔드</b></td><td><code>React</code> &nbsp;<code>Next.js</code> &nbsp;<code>TypeScript</code> &nbsp;<code>JavaScript</code></td></tr><tr><td><b>데이터베이스</b></td><td><code>Supabase</code> &nbsp;<code>PostgreSQL</code> &nbsp;<code>MySQL</code> &nbsp;<code>Redis</code> &nbsp;<code>SQL</code></td></tr></table>
 
@@ -111,8 +114,7 @@
 ## 사용 언어
 
 <div align="center">
-  <img src="https://skillicons.dev/icons?i=python,js,ts&theme=dark" alt="사용 언어 아이콘">
-</div>
+<a href="https://www.python.org/"><img src="https://skillicons.dev/icons?i=python&theme=dark" alt="Python" title="Python"></a><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://skillicons.dev/icons?i=js&theme=dark" alt="JavaScript" title="JavaScript"></a><a href="https://www.java.com/"><img src="https://skillicons.dev/icons?i=java&theme=dark" alt="Java" title="Java"></a><a href="https://www.typescriptlang.org/"><img src="https://skillicons.dev/icons?i=ts&theme=dark" alt="TypeScript" title="TypeScript"></a><a href="https://kotlinlang.org/"><img src="https://skillicons.dev/icons?i=kotlin&theme=dark" alt="Kotlin" title="Kotlin"></a></div>
 
 <div align="center">
   <img src="assets/languages.svg" width="100%" alt="대표 프로젝트의 언어 분포">
