@@ -48,3 +48,9 @@ GitHub 사용자명
 
 - 설정 가이드: `docs/SETUP.md`
 - 기여 가이드: `CONTRIBUTING.md`
+
+## 5. 듀얼 리모트 운영 (origin=배포 프로필 저장소, tool=템플릿 문서 저장소)
+
+이 로컬 디렉토리는 `origin`(실사용자 프로필 저장소, README.md = 생성된 프로필)과 `tool`(템플릿 자체 문서 저장소, README.md = 프로젝트 설명서) 두 리모트를 동시에 추적한다. 같은 브랜치의 같은 `README.md` 경로를 두 리모트가 서로 다른 용도로 쓰기 때문에, 로컬 워킹트리에서 파일을 바꿔치기해서 각각 push하는 방식은 **절대 금지** — 대시보드의 자동 배포(`scripts/dashboard.py`의 `deploy()`)가 그 사이에 끼어들면 로컬에 남아있는 "문서용" README가 그대로 `origin`(실제 프로필)에 push되어 프로필이 깨지는 사고가 실제로 발생했다.
+- `tool`에 문서 README를 반영해야 할 때는 워킹트리를 건드리지 않는 git plumbing으로 처리한다: `git hash-object -w`로 blob 생성 → `git ls-tree`+`git mktree`로 README.md만 교체한 트리 생성 → `git commit-tree`로 커밋 생성 → `git push tool <commit>:main`. 로컬 브랜치 ref와 워킹트리는 항상 `origin`(생성된 프로필) 상태를 유지해야 한다.
+- 절대로 로컬에서 문서 README로 커밋을 만들고 그 상태로 몇 단계를 진행하지 말 것 — 만들었다면 `tool`에 push한 직후 바로 되돌린다.
