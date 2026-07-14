@@ -38,7 +38,11 @@ def calculate_score(repo: dict, weights: dict, now: datetime | None = None) -> i
 
 def select_repositories(repositories: list[dict], config: dict, now: datetime | None = None) -> list[dict]:
     weights = config["selection"]["weights"]
-    candidates = [repo for repo in repositories if not repo.get("is_fork") and not repo.get("is_archived")]
+    username = (config.get("profile", {}).get("github_username") or "").lower()
+    candidates = [
+        repo for repo in repositories
+        if not repo.get("is_fork") and not repo.get("is_archived") and repo.get("name", "").lower() != username
+    ]
     for repo in candidates:
         repo["score"] = calculate_score(repo, weights, now)
     return sorted(candidates, key=lambda repo: (repo["score"], repo.get("last_commit_at") or ""), reverse=True)[: config["selection"]["top_n"]]

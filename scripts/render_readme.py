@@ -105,11 +105,13 @@ def infer_stacks(repositories: list[dict]) -> dict[str, list[str]]:
     }
 
 
-def infer_activities(repositories: list[dict]) -> list[dict]:
+def infer_activities(repositories: list[dict], username: str = "") -> list[dict]:
+    username = username.lower()
     candidates = sorted(
         (
             repo for repo in repositories
             if repo.get("last_commit_at") and not repo.get("is_fork") and not repo.get("is_archived")
+            and repo.get("name", "").lower() != username
         ),
         key=lambda repo: repo["last_commit_at"],
         reverse=True,
@@ -183,7 +185,7 @@ def main() -> None:
         repositories=repositories,
         stacks=stacks,
         development_tools=config.get("development_tools", []),
-        activities=config.get("activities", []) or infer_activities(all_repositories),
+        activities=config.get("activities", []) or infer_activities(all_repositories, profile.get("github_username", "")),
         render=config["render"],
     )
     Path(args.output).write_text(rendered.rstrip() + "\n", encoding="utf-8")

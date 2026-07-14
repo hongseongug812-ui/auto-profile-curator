@@ -37,6 +37,11 @@ class ScoringTests(unittest.TestCase):
         newer = repo(name="newer", last_commit_at=(NOW - timedelta(days=2)).isoformat())
         self.assertEqual(select_repositories([older, newer], config, NOW)[0]["name"], "newer")
 
+    def test_the_profile_repository_itself_is_not_selectable(self):
+        config = {"selection": {"top_n": 6, "weights": WEIGHTS}, "profile": {"github_username": "octocat"}}
+        selected = select_repositories([repo(name="octocat"), repo(name="real-project")], config, NOW)
+        self.assertEqual([item["name"] for item in selected], ["real-project"])
+
 
 if __name__ == "__main__":
     unittest.main()
