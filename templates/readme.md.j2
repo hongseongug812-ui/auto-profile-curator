@@ -74,8 +74,13 @@
   {% for repo in row %}
     <td width="50%" valign="top">
       <h3><a href="{{ repo.url }}">{{ repo.name }}</a></h3>
-      <p><a href="{{ repo.url }}">{{ repo.summary }}</a></p>
-      <p><sub>{% if repo.primary_language %}<b>{{ repo.primary_language.name }}</b> · {% endif %}★ {{ repo.stars }} · 포크 {{ repo.forks }} · 업데이트 {{ repo.last_commit_at[:10] if repo.last_commit_at else '정보 없음' }}</sub></p>
+      <p>{{ repo.summary }}</p>
+      <p>
+        {% if repo.primary_language %}<img src="https://img.shields.io/badge/-{{ repo.primary_language.name | urlencode }}-333333?style=flat-square" alt="{{ repo.primary_language.name }}">{% endif %}
+        <img src="https://img.shields.io/github/stars/{{ repo.full_name }}?style=flat-square&label=%E2%98%85&color={{ render.theme_color }}&labelColor=333333" alt="stars">
+        <img src="https://img.shields.io/github/last-commit/{{ repo.full_name }}?style=flat-square&label=updated&color={{ render.theme_color }}&labelColor=333333" alt="last commit">
+      </p>
+      <p><a href="{{ repo.url }}"><b>저장소 보기 →</b></a></p>
     </td>
   {% endfor %}
   {% if row | length == 1 %}<td width="50%"></td>{% endif %}
