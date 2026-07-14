@@ -55,6 +55,12 @@
 
 ## 기술 스택
 
+{% if stack_badges %}
+<div align="center">
+  {% for badge in stack_badges %}<a href="{{ badge.url }}"><img src="https://skillicons.dev/icons?i={{ badge.slug }}&theme=dark" alt="{{ badge.name }}" title="{{ badge.name }}"></a>{% endfor %}
+</div>
+
+{% endif %}
 <table>
   {% if stacks.get('ai_cloud') %}<tr><td><b>AI & 클라우드</b></td><td>{% for item in stacks.ai_cloud %}<code>{{ item }}</code>{% if not loop.last %} &nbsp;{% endif %}{% endfor %}</td></tr>{% endif %}
   {% if stacks.get('back_end') %}<tr><td><b>백엔드</b></td><td>{% for item in stacks.back_end %}<code>{{ item }}</code>{% if not loop.last %} &nbsp;{% endif %}{% endfor %}</td></tr>{% endif %}

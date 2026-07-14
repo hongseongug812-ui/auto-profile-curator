@@ -154,6 +154,58 @@ def language_badges(language_names: list[str]) -> list[dict]:
     return badges
 
 
+FRAMEWORK_ICON_INFO = {
+    "fastapi": {"slug": "fastapi", "url": "https://fastapi.tiangolo.com/"},
+    "spring boot": {"slug": "spring", "url": "https://spring.io/projects/spring-boot"},
+    "node.js": {"slug": "nodejs", "url": "https://nodejs.org/"},
+    "react": {"slug": "react", "url": "https://react.dev/"},
+    "next.js": {"slug": "next", "url": "https://nextjs.org/"},
+    "flutter": {"slug": "flutter", "url": "https://flutter.dev/"},
+    "supabase": {"slug": "supabase", "url": "https://supabase.com/"},
+    "postgresql": {"slug": "postgres", "url": "https://www.postgresql.org/"},
+    "mysql": {"slug": "mysql", "url": "https://www.mysql.com/"},
+    "redis": {"slug": "redis", "url": "https://redis.io/"},
+    "mongodb": {"slug": "mongodb", "url": "https://www.mongodb.com/"},
+    "docker": {"slug": "docker", "url": "https://www.docker.com/"},
+    "kubernetes": {"slug": "kubernetes", "url": "https://kubernetes.io/"},
+    "aws": {"slug": "aws", "url": "https://aws.amazon.com/"},
+    "gcp": {"slug": "gcp", "url": "https://cloud.google.com/"},
+    "azure": {"slug": "azure", "url": "https://azure.microsoft.com/"},
+    "pytorch": {"slug": "pytorch", "url": "https://pytorch.org/"},
+    "tensorflow": {"slug": "tensorflow", "url": "https://www.tensorflow.org/"},
+    "graphql": {"slug": "graphql", "url": "https://graphql.org/"},
+    "tailwindcss": {"slug": "tailwind", "url": "https://tailwindcss.com/"},
+    "figma": {"slug": "figma", "url": "https://www.figma.com/"},
+    "git": {"slug": "git", "url": "https://git-scm.com/"},
+    "github": {"slug": "github", "url": "https://github.com/"},
+    "linux": {"slug": "linux", "url": "https://www.linux.org/"},
+    "nginx": {"slug": "nginx", "url": "https://nginx.org/"},
+    "firebase": {"slug": "firebase", "url": "https://firebase.google.com/"},
+    "django": {"slug": "django", "url": "https://www.djangoproject.com/"},
+    "flask": {"slug": "flask", "url": "https://flask.palletsprojects.com/"},
+    "laravel": {"slug": "laravel", "url": "https://laravel.com/"},
+    ".net": {"slug": "dotnet", "url": "https://dotnet.microsoft.com/"},
+    "redux": {"slug": "redux", "url": "https://redux.js.org/"},
+    "vs code": {"slug": "vscode", "url": "https://code.visualstudio.com/"},
+}
+
+
+def stack_badges(stacks: dict, development_tools: list[str]) -> list[dict]:
+    items = [
+        *stacks.get("ai_cloud", []), *stacks.get("back_end", []),
+        *stacks.get("front_end", []), *stacks.get("database", []),
+        *development_tools,
+    ]
+    badges = []
+    seen = set()
+    for name in items:
+        info = LANGUAGE_INFO.get(name.lower()) or FRAMEWORK_ICON_INFO.get(name.lower())
+        if info and info["slug"] not in seen:
+            seen.add(info["slug"])
+            badges.append({"name": name, "slug": info["slug"], "url": info["url"]})
+    return badges
+
+
 def infer_activities(repositories: list[dict], username: str = "") -> list[dict]:
     username = username.lower()
     candidates = sorted(
@@ -234,14 +286,16 @@ def main() -> None:
         for repo in all_repositories
         if repo.get("primary_language")
     ))
+    development_tools = config.get("development_tools", [])
     rendered = environment.get_template("readme.md.j2").render(
         profile=profile,
         repositories=repositories,
         stacks=stacks,
-        development_tools=config.get("development_tools", []),
+        development_tools=development_tools,
         activities=config.get("activities", []) or infer_activities(all_repositories, profile.get("github_username", "")),
         render=config["render"],
         language_badges=language_badges(language_names),
+        stack_badges=stack_badges(stacks, development_tools),
     )
     Path(args.output).write_text(rendered.rstrip() + "\n", encoding="utf-8")
     cache_path.parent.mkdir(parents=True, exist_ok=True)
