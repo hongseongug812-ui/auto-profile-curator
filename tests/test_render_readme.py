@@ -3,7 +3,7 @@ from pathlib import Path
 import unittest
 
 sys.path.insert(0, str(Path(__file__).parents[1] / "scripts"))
-from render_readme import infer_activities, language_badges, stack_badges
+from render_readme import infer_activities, stack_badges, stacks_without_icons, without_icons
 
 
 def repo(**overrides):
@@ -23,20 +23,6 @@ class InferActivitiesTests(unittest.TestCase):
         self.assertEqual(titles, ["c"])
 
 
-class LanguageBadgesTests(unittest.TestCase):
-    def test_maps_known_languages_and_dedupes(self):
-        badges = language_badges(["Python", "JavaScript", "Python"])
-        self.assertEqual([badge["slug"] for badge in badges], ["python", "js"])
-        self.assertEqual(badges[0]["url"], "https://www.python.org/")
-
-    def test_skips_unmapped_languages(self):
-        badges = language_badges(["ShaderLab", "Python"])
-        self.assertEqual([badge["slug"] for badge in badges], ["python"])
-
-    def test_empty_when_nothing_maps(self):
-        self.assertEqual(language_badges(["ShaderLab"]), [])
-
-
 class StackBadgesTests(unittest.TestCase):
     def test_maps_frameworks_and_languages_across_categories(self):
         stacks = {"ai_cloud": ["AWS", "OpenAI"], "back_end": ["FastAPI", "Python"], "front_end": [], "database": ["PostgreSQL"]}
@@ -47,6 +33,26 @@ class StackBadgesTests(unittest.TestCase):
         stacks = {"ai_cloud": [], "back_end": ["Python", "python"], "front_end": [], "database": []}
         badges = stack_badges(stacks, [])
         self.assertEqual(len(badges), 1)
+
+    def test_merges_language_names_alongside_stack_items(self):
+        stacks = {"ai_cloud": [], "back_end": ["FastAPI"], "front_end": [], "database": []}
+        badges = stack_badges(stacks, [], language_names=["Python", "TypeScript"])
+        self.assertEqual([badge["slug"] for badge in badges], ["python", "ts", "fastapi"])
+
+    def test_skips_unmapped_items(self):
+        stacks = {"ai_cloud": ["OpenAI", "Gemma"], "back_end": [], "front_end": [], "database": []}
+        self.assertEqual(stack_badges(stacks, []), [])
+
+
+class WithoutIconsTests(unittest.TestCase):
+    def test_stacks_without_icons_drops_items_that_already_have_a_badge(self):
+        stacks = {"ai_cloud": ["OpenAI", "AWS"], "back_end": ["Python"], "front_end": [], "database": []}
+        filtered = stacks_without_icons(stacks)
+        self.assertEqual(filtered["ai_cloud"], ["OpenAI"])
+        self.assertEqual(filtered["back_end"], [])
+
+    def test_without_icons_filters_a_plain_list(self):
+        self.assertEqual(without_icons(["Docker", "SomeCustomTool"]), ["SomeCustomTool"])
 
 
 if __name__ == "__main__":

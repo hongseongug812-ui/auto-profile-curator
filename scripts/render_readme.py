@@ -143,17 +143,6 @@ LANGUAGE_INFO = {
 }
 
 
-def language_badges(language_names: list[str]) -> list[dict]:
-    badges = []
-    seen = set()
-    for name in language_names:
-        info = LANGUAGE_INFO.get(name.lower())
-        if info and info["slug"] not in seen:
-            seen.add(info["slug"])
-            badges.append({"name": name, "slug": info["slug"], "url": info["url"]})
-    return badges
-
-
 FRAMEWORK_ICON_INFO = {
     "fastapi": {"slug": "fastapi", "url": "https://fastapi.tiangolo.com/"},
     "spring boot": {"slug": "spring", "url": "https://spring.io/projects/spring-boot"},
@@ -190,8 +179,13 @@ FRAMEWORK_ICON_INFO = {
 }
 
 
-def stack_badges(stacks: dict, development_tools: list[str]) -> list[dict]:
+def has_icon(name: str) -> bool:
+    return name.lower() in LANGUAGE_INFO or name.lower() in FRAMEWORK_ICON_INFO
+
+
+def stack_badges(stacks: dict, development_tools: list[str], language_names: list[str] | None = None) -> list[dict]:
     items = [
+        *(language_names or []),
         *stacks.get("ai_cloud", []), *stacks.get("back_end", []),
         *stacks.get("front_end", []), *stacks.get("database", []),
         *development_tools,
@@ -204,6 +198,15 @@ def stack_badges(stacks: dict, development_tools: list[str]) -> list[dict]:
             seen.add(info["slug"])
             badges.append({"name": name, "slug": info["slug"], "url": info["url"]})
     return badges
+
+
+def stacks_without_icons(stacks: dict) -> dict:
+    """Items already shown as icon badges don't need to repeat as plain <code> tags."""
+    return {category: [item for item in values if not has_icon(item)] for category, values in stacks.items()}
+
+
+def without_icons(items: list[str]) -> list[str]:
+    return [item for item in items if not has_icon(item)]
 
 
 def infer_activities(repositories: list[dict], username: str = "") -> list[dict]:
@@ -291,11 +294,12 @@ def main() -> None:
         profile=profile,
         repositories=repositories,
         stacks=stacks,
+        stacks_without_icons=stacks_without_icons(stacks),
         development_tools=development_tools,
+        development_tools_without_icons=without_icons(development_tools),
         activities=config.get("activities", []) or infer_activities(all_repositories, profile.get("github_username", "")),
         render=config["render"],
-        language_badges=language_badges(language_names),
-        stack_badges=stack_badges(stacks, development_tools),
+        stack_badges=stack_badges(stacks, development_tools, language_names),
     )
     Path(args.output).write_text(rendered.rstrip() + "\n", encoding="utf-8")
     cache_path.parent.mkdir(parents=True, exist_ok=True)
