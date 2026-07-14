@@ -1,3 +1,6 @@
+{% macro render_row(items) -%}
+{% for item in items %}{% if item.icon %}<a href="{{ item.url }}"><img src="https://skillicons.dev/icons?i={{ item.icon }}&theme=dark" alt="{{ item.name }}" title="{{ item.name }}" height="28"></a>{% else %}<img src="https://img.shields.io/badge/-{{ item.name | urlencode }}-333333?style=flat-square" alt="{{ item.name }}" title="{{ item.name }}">{% endif %}{% if not loop.last %} {% endif %}{% endfor %}
+{%- endmacro %}
 <div align="center">
 
 <img src="{{ render.header_svg_path }}" width="100%" alt="{{ profile.name }} 프로필 헤더">
@@ -49,29 +52,28 @@
 </table>
 {% endif %}
 
-{% set has_stacks = stacks.get('ai_cloud') or stacks.get('back_end') or stacks.get('front_end') or stacks.get('database') %}
-{% if has_stacks or development_tools %}
+{% set has_stacks = stack_rows.ai_cloud or stack_rows.back_end or stack_rows.front_end or stack_rows.database or stack_rows.development_tools %}
+{% if has_stacks %}
 <br>
 
 ## 기술 스택
 
-{% if stack_badges %}
-<div align="center">
-  {% for badge in stack_badges %}<a href="{{ badge.url }}"><img src="https://skillicons.dev/icons?i={{ badge.slug }}&theme=dark" alt="{{ badge.name }}" title="{{ badge.name }}"></a>{% endfor %}
-</div>
-
-{% endif %}
-{% set has_leftover_text = stacks_without_icons.get('ai_cloud') or stacks_without_icons.get('back_end') or stacks_without_icons.get('front_end') or stacks_without_icons.get('database') or development_tools_without_icons %}
-{% if has_leftover_text %}
 <table>
-  {% if stacks_without_icons.get('ai_cloud') %}<tr><td><b>AI & 클라우드</b></td><td>{% for item in stacks_without_icons.ai_cloud %}<code>{{ item }}</code>{% if not loop.last %} &nbsp;{% endif %}{% endfor %}</td></tr>{% endif %}
-  {% if stacks_without_icons.get('back_end') %}<tr><td><b>백엔드</b></td><td>{% for item in stacks_without_icons.back_end %}<code>{{ item }}</code>{% if not loop.last %} &nbsp;{% endif %}{% endfor %}</td></tr>{% endif %}
-  {% if stacks_without_icons.get('front_end') %}<tr><td><b>프론트엔드</b></td><td>{% for item in stacks_without_icons.front_end %}<code>{{ item }}</code>{% if not loop.last %} &nbsp;{% endif %}{% endfor %}</td></tr>{% endif %}
-  {% if stacks_without_icons.get('database') %}<tr><td><b>데이터베이스</b></td><td>{% for item in stacks_without_icons.database %}<code>{{ item }}</code>{% if not loop.last %} &nbsp;{% endif %}{% endfor %}</td></tr>{% endif %}
-  {% if development_tools_without_icons %}<tr><td><b>개발 도구</b></td><td>{% for item in development_tools_without_icons %}<code>{{ item }}</code>{% if not loop.last %} &nbsp;{% endif %}{% endfor %}</td></tr>{% endif %}
+  {% if stack_rows.ai_cloud %}<tr><td><b>AI & 클라우드</b></td><td>{{ render_row(stack_rows.ai_cloud) }}</td></tr>{% endif %}
+  {% if stack_rows.back_end %}<tr><td><b>백엔드</b></td><td>{{ render_row(stack_rows.back_end) }}</td></tr>{% endif %}
+  {% if stack_rows.front_end %}<tr><td><b>프론트엔드</b></td><td>{{ render_row(stack_rows.front_end) }}</td></tr>{% endif %}
+  {% if stack_rows.database %}<tr><td><b>데이터베이스</b></td><td>{{ render_row(stack_rows.database) }}</td></tr>{% endif %}
+  {% if stack_rows.development_tools %}<tr><td><b>개발 도구</b></td><td>{{ render_row(stack_rows.development_tools) }}</td></tr>{% endif %}
 </table>
 {% endif %}
-{% endif %}
+
+<br>
+
+## 언어 사용 비율
+
+<div align="center">
+  <img src="{{ render.language_svg_path }}" width="100%" alt="대표 프로젝트의 언어 분포">
+</div>
 
 <br>
 
@@ -96,14 +98,6 @@
   </tr>
 {% endfor %}
 </table>
-
-<br>
-
-## 언어 사용 비율
-
-<div align="center">
-  <img src="{{ render.language_svg_path }}" width="100%" alt="대표 프로젝트의 언어 분포">
-</div>
 
 {% if activities %}
 <br>

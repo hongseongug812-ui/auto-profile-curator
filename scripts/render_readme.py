@@ -179,34 +179,23 @@ FRAMEWORK_ICON_INFO = {
 }
 
 
-def has_icon(name: str) -> bool:
-    return name.lower() in LANGUAGE_INFO or name.lower() in FRAMEWORK_ICON_INFO
-
-
-def stack_badges(stacks: dict, development_tools: list[str], language_names: list[str] | None = None) -> list[dict]:
-    items = [
-        *(language_names or []),
-        *stacks.get("ai_cloud", []), *stacks.get("back_end", []),
-        *stacks.get("front_end", []), *stacks.get("database", []),
-        *development_tools,
-    ]
-    badges = []
-    seen = set()
+def render_stack_items(items: list[str]) -> list[dict]:
+    """Every item becomes a badge: a real logo icon where we know one, otherwise a plain label badge."""
+    rendered = []
     for name in items:
         info = LANGUAGE_INFO.get(name.lower()) or FRAMEWORK_ICON_INFO.get(name.lower())
-        if info and info["slug"] not in seen:
-            seen.add(info["slug"])
-            badges.append({"name": name, "slug": info["slug"], "url": info["url"]})
-    return badges
+        rendered.append({"name": name, "icon": info["slug"] if info else None, "url": info["url"] if info else None})
+    return rendered
 
 
-def stacks_without_icons(stacks: dict) -> dict:
-    """Items already shown as icon badges don't need to repeat as plain <code> tags."""
-    return {category: [item for item in values if not has_icon(item)] for category, values in stacks.items()}
-
-
-def without_icons(items: list[str]) -> list[str]:
-    return [item for item in items if not has_icon(item)]
+def stack_rows(stacks: dict, development_tools: list[str]) -> dict:
+    return {
+        "ai_cloud": render_stack_items(stacks.get("ai_cloud", [])),
+        "back_end": render_stack_items(stacks.get("back_end", [])),
+        "front_end": render_stack_items(stacks.get("front_end", [])),
+        "database": render_stack_items(stacks.get("database", [])),
+        "development_tools": render_stack_items(development_tools),
+    }
 
 
 def infer_activities(repositories: list[dict], username: str = "") -> list[dict]:
@@ -284,22 +273,15 @@ def main() -> None:
     for category, values in inferred_stacks.items():
         if not stacks.get(category):
             stacks[category] = values
-    language_names = list(dict.fromkeys(
-        repo["primary_language"]["name"]
-        for repo in all_repositories
-        if repo.get("primary_language")
-    ))
     development_tools = config.get("development_tools", [])
     rendered = environment.get_template("readme.md.j2").render(
         profile=profile,
         repositories=repositories,
         stacks=stacks,
-        stacks_without_icons=stacks_without_icons(stacks),
+        stack_rows=stack_rows(stacks, development_tools),
         development_tools=development_tools,
-        development_tools_without_icons=without_icons(development_tools),
         activities=config.get("activities", []) or infer_activities(all_repositories, profile.get("github_username", "")),
         render=config["render"],
-        stack_badges=stack_badges(stacks, development_tools, language_names),
     )
     Path(args.output).write_text(rendered.rstrip() + "\n", encoding="utf-8")
     cache_path.parent.mkdir(parents=True, exist_ok=True)

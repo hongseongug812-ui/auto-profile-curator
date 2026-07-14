@@ -36,11 +36,16 @@
 
 ## 기술 스택
 
-<div align="center">
-<a href="https://www.python.org/"><img src="https://skillicons.dev/icons?i=python&theme=dark" alt="Python" title="Python"></a><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://skillicons.dev/icons?i=js&theme=dark" alt="JavaScript" title="JavaScript"></a><a href="https://www.java.com/"><img src="https://skillicons.dev/icons?i=java&theme=dark" alt="Java" title="Java"></a><a href="https://www.typescriptlang.org/"><img src="https://skillicons.dev/icons?i=ts&theme=dark" alt="TypeScript" title="TypeScript"></a><a href="https://kotlinlang.org/"><img src="https://skillicons.dev/icons?i=kotlin&theme=dark" alt="Kotlin" title="Kotlin"></a><a href="https://pytorch.org/"><img src="https://skillicons.dev/icons?i=pytorch&theme=dark" alt="PyTorch" title="PyTorch"></a><a href="https://aws.amazon.com/"><img src="https://skillicons.dev/icons?i=aws&theme=dark" alt="AWS" title="AWS"></a><a href="https://fastapi.tiangolo.com/"><img src="https://skillicons.dev/icons?i=fastapi&theme=dark" alt="FastAPI" title="FastAPI"></a><a href="https://react.dev/"><img src="https://skillicons.dev/icons?i=react&theme=dark" alt="React" title="React"></a><a href="https://nextjs.org/"><img src="https://skillicons.dev/icons?i=next&theme=dark" alt="Next.js" title="Next.js"></a><a href="https://supabase.com/"><img src="https://skillicons.dev/icons?i=supabase&theme=dark" alt="Supabase" title="Supabase"></a></div>
-
 <table>
-<tr><td><b>AI & 클라우드</b></td><td><code>OpenAI</code> &nbsp;<code>LLM</code> &nbsp;<code>Gemma</code></td></tr></table>
+<tr><td><b>AI & 클라우드</b></td><td><img src="https://img.shields.io/badge/-OpenAI-333333?style=flat-square" alt="OpenAI" title="OpenAI"> <img src="https://img.shields.io/badge/-LLM-333333?style=flat-square" alt="LLM" title="LLM"> <a href="https://pytorch.org/"><img src="https://skillicons.dev/icons?i=pytorch&theme=dark" alt="PyTorch" title="PyTorch" height="28"></a> <img src="https://img.shields.io/badge/-Gemma-333333?style=flat-square" alt="Gemma" title="Gemma"> <a href="https://aws.amazon.com/"><img src="https://skillicons.dev/icons?i=aws&theme=dark" alt="AWS" title="AWS" height="28"></a></td></tr><tr><td><b>백엔드</b></td><td><a href="https://fastapi.tiangolo.com/"><img src="https://skillicons.dev/icons?i=fastapi&theme=dark" alt="FastAPI" title="FastAPI" height="28"></a> <a href="https://www.python.org/"><img src="https://skillicons.dev/icons?i=python&theme=dark" alt="Python" title="Python" height="28"></a> <a href="https://www.java.com/"><img src="https://skillicons.dev/icons?i=java&theme=dark" alt="Java" title="Java" height="28"></a> <a href="https://kotlinlang.org/"><img src="https://skillicons.dev/icons?i=kotlin&theme=dark" alt="Kotlin" title="Kotlin" height="28"></a></td></tr><tr><td><b>프론트엔드</b></td><td><a href="https://react.dev/"><img src="https://skillicons.dev/icons?i=react&theme=dark" alt="React" title="React" height="28"></a> <a href="https://nextjs.org/"><img src="https://skillicons.dev/icons?i=next&theme=dark" alt="Next.js" title="Next.js" height="28"></a> <a href="https://www.typescriptlang.org/"><img src="https://skillicons.dev/icons?i=ts&theme=dark" alt="TypeScript" title="TypeScript" height="28"></a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://skillicons.dev/icons?i=js&theme=dark" alt="JavaScript" title="JavaScript" height="28"></a></td></tr><tr><td><b>데이터베이스</b></td><td><a href="https://supabase.com/"><img src="https://skillicons.dev/icons?i=supabase&theme=dark" alt="Supabase" title="Supabase" height="28"></a></td></tr></table>
+
+<br>
+
+## 언어 사용 비율
+
+<div align="center">
+  <img src="assets/languages.svg" width="100%" alt="대표 프로젝트의 언어 분포">
+</div>
 
 <br>
 
@@ -108,14 +113,6 @@
     </td>
   </tr>
 </table>
-
-<br>
-
-## 언어 사용 비율
-
-<div align="center">
-  <img src="assets/languages.svg" width="100%" alt="대표 프로젝트의 언어 분포">
-</div>
 
 <br>
 
