@@ -111,6 +111,10 @@
 ## 사용 언어
 
 <div align="center">
+  <img src="https://skillicons.dev/icons?i=python,js,ts&theme=dark" alt="사용 언어 아이콘">
+</div>
+
+<div align="center">
   <img src="assets/languages.svg" width="100%" alt="대표 프로젝트의 언어 분포">
 </div>
 
