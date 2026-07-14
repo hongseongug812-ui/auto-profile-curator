@@ -1,18 +1,18 @@
 <div align="center">
 
-<img src="assets/header.svg" width="100%" alt="hsu profile header">
+<img src="assets/header.svg" width="100%" alt="hsu 프로필 헤더">
 
 <br>
 
-<img src="assets/pet.svg" width="100%" alt="hongseongug812-ui commit dinosaur">
+<img src="assets/pet.svg" width="100%" alt="hongseongug812-ui 커밋 공룡">
 
 <br>
 
 <p><b>CS major · Cloud minor | Building things with AI</b></p>
 
-<sub>Public repositories analyzed automatically · A new dinosaur every 100 commits · Refreshed every hour</sub>
+<sub>공개 저장소를 자동으로 분석 · 커밋마다 자라는 공룡 · 매시간 갱신</sub>
 
-<a href="https://github.com/hongseongug812-ui?tab=repositories">Repositories</a>
+<a href="https://github.com/hongseongug812-ui?tab=repositories">저장소 보기</a>
 
 
 
@@ -20,14 +20,14 @@
 
 <br>
 
-## Information
+## 소개
 
 
 
 
 <table>
   
-  <tr><td><b>Interests</b></td><td>Full-stack · Backend · AI / LLM · Python · JavaScript · Java</td></tr>
+  <tr><td><b>관심 분야</b></td><td>풀스택 · 백엔드 · AI/LLM · Python · JavaScript · Java</td></tr>
   
 </table>
 
@@ -37,14 +37,14 @@
   <tr>
     
     <td width="50%" valign="top">
-      <h3>What I bring</h3>
-      <ul><li>Hands-on experience across 21 public repositories</li><li>Product development with Python, JavaScript, Java</li></ul>
+      <h3>강점</h3>
+      <ul><li>공개 저장소 22개를 통한 실전 경험</li><li>Python, JavaScript, Java 기반 제품 개발 경험</li></ul>
     </td>
     
     
     <td width="50%" valign="top">
-      <h3>Currently focused on</h3>
-      <ul><li>Building Full-stack projects</li><li>Building Backend projects</li></ul>
+      <h3>현재 집중하는 것</h3>
+      <ul><li>풀스택 프로젝트 진행 중</li><li>백엔드 프로젝트 진행 중</li></ul>
     </td>
     
   </tr>
@@ -55,35 +55,35 @@
 
 <br>
 
-## Dev Stacks
+## 기술 스택
 
 <table>
-  <tr><td><b>AI & Cloud</b></td><td><code>OpenAI</code> &nbsp;<code>LLM</code> &nbsp;<code>PyTorch</code> &nbsp;<code>Gemma</code> &nbsp;<code>AWS</code></td></tr>
-  <tr><td><b>Back-end</b></td><td><code>FastAPI</code> &nbsp;<code>Spring Boot</code> &nbsp;<code>Python</code> &nbsp;<code>Java</code> &nbsp;<code>Kotlin</code> &nbsp;<code>Node.js</code></td></tr>
-  <tr><td><b>Front-end</b></td><td><code>React</code> &nbsp;<code>Next.js</code> &nbsp;<code>TypeScript</code> &nbsp;<code>JavaScript</code></td></tr>
-  <tr><td><b>Database</b></td><td><code>Supabase</code> &nbsp;<code>PostgreSQL</code> &nbsp;<code>MySQL</code> &nbsp;<code>Redis</code> &nbsp;<code>SQL</code></td></tr>
+  <tr><td><b>AI & 클라우드</b></td><td><code>OpenAI</code> &nbsp;<code>LLM</code> &nbsp;<code>PyTorch</code> &nbsp;<code>Gemma</code> &nbsp;<code>AWS</code></td></tr>
+  <tr><td><b>백엔드</b></td><td><code>FastAPI</code> &nbsp;<code>Spring Boot</code> &nbsp;<code>Python</code> &nbsp;<code>Java</code> &nbsp;<code>Kotlin</code> &nbsp;<code>Node.js</code></td></tr>
+  <tr><td><b>프론트엔드</b></td><td><code>React</code> &nbsp;<code>Next.js</code> &nbsp;<code>TypeScript</code> &nbsp;<code>JavaScript</code></td></tr>
+  <tr><td><b>데이터베이스</b></td><td><code>Supabase</code> &nbsp;<code>PostgreSQL</code> &nbsp;<code>MySQL</code> &nbsp;<code>Redis</code> &nbsp;<code>SQL</code></td></tr>
   
 </table>
 
 
 <br>
 
-## Featured Repositories
+## 대표 프로젝트
 
 <table>
 
   <tr>
+  
+    <td width="50%" valign="top">
+      <h3><a href="https://github.com/hongseongug812-ui/auto-profile-curator">auto-profile-curator</a></h3>
+      <p>Auto Profile Curator is a GitHub repository that automatically analyzes and curates public repositories to generate an optimized README for a user's profile, summarizing their skills, projects, and contributions.</p>
+      <p><sub><b>Python</b> · ★ 0 · 포크 0 · 업데이트 2026-07-14</sub></p>
+    </td>
   
     <td width="50%" valign="top">
       <h3><a href="https://github.com/hongseongug812-ui/mc-devkit">mc-devkit</a></h3>
       <p>MC DevKit is a web-based server management tool that allows easy opening and managing of Minecraft servers without port forwarding, supporting external access, team management, real-time monitoring, and automatic performance optimization.</p>
-      <p><sub><b>JavaScript</b> · ★ 0 · Forks 0 · Updated 2026-07-12</sub></p>
-    </td>
-  
-    <td width="50%" valign="top">
-      <h3><a href="https://github.com/hongseongug812-ui/hongseongug812-ui">hongseongug812-ui</a></h3>
-      <p>Auto Profile Curator is a GitHub repository that automatically analyzes and curates the README of public repositories, extracting key information such as role, technology stack, projects, and recent activity to generate an optimized profile for its owner.</p>
-      <p><sub><b>Python</b> · ★ 0 · Forks 0 · Updated 2026-07-14</sub></p>
+      <p><sub><b>JavaScript</b> · ★ 0 · 포크 0 · 업데이트 2026-07-12</sub></p>
     </td>
   
   
@@ -92,32 +92,32 @@
   <tr>
   
     <td width="50%" valign="top">
-      <h3><a href="https://github.com/hongseongug812-ui/llm-bench-dashboard">llm-bench-dashboard</a></h3>
-      <p>This GitHub repository provides a CLI tool for benchmarking local LLMs, comparing results across Mac and Windows devices in a dashboard format, and automatically generating PDF reports based on predefined acceptance criteria.</p>
-      <p><sub><b>Python</b> · ★ 0 · Forks 0 · Updated 2026-07-14</sub></p>
+      <h3><a href="https://github.com/hongseongug812-ui/hongseongug812-ui">hongseongug812-ui</a></h3>
+      <p>This GitHub repository automates the analysis and curation of README files for public repositories, generating optimized profiles based on key information such as roles, technologies used, projects, and recent activity.</p>
+      <p><sub><b>Python</b> · ★ 0 · 포크 0 · 업데이트 2026-07-14</sub></p>
     </td>
+  
+    <td width="50%" valign="top">
+      <h3><a href="https://github.com/hongseongug812-ui/llm-bench-dashboard">llm-bench-dashboard</a></h3>
+      <p>This GitHub repository provides a CLI tool for benchmarking local large language models on both macOS and Windows, generating a real-time dashboard with comparative metrics and creating an auto-generated PDF report summarizing the results.</p>
+      <p><sub><b>Python</b> · ★ 0 · 포크 0 · 업데이트 2026-07-14</sub></p>
+    </td>
+  
+  
+  </tr>
+
+  <tr>
   
     <td width="50%" valign="top">
       <h3><a href="https://github.com/hongseongug812-ui/grounded_work_ai">grounded_work_ai</a></h3>
       <p>Grounded Work AI is an AI business assistant platform that uses grounded artificial intelligence to generate answers, drafts, and execute actions based on uploaded documents. It includes features for document-based Q&A, automatic email/Jira ticket/Slack message drafting, and action approval with real-time monitoring.</p>
-      <p><sub><b>Python</b> · ★ 0 · Forks 0 · Updated 2026-03-08</sub></p>
+      <p><sub><b>Python</b> · ★ 0 · 포크 0 · 업데이트 2026-03-08</sub></p>
     </td>
-  
-  
-  </tr>
-
-  <tr>
   
     <td width="50%" valign="top">
       <h3><a href="https://github.com/hongseongug812-ui/safewave">safewave</a></h3>
       <p>SafeWave is a real-time AI platform that detects falls, unauthorized entries, and prolonged inactivity using WiFi Channel State Information (CSI), without the need for cameras or wearable devices, and notifies caregivers via WebSocket.</p>
-      <p><sub><b>JavaScript</b> · ★ 0 · Forks 0 · Updated 2026-04-04</sub></p>
-    </td>
-  
-    <td width="50%" valign="top">
-      <h3><a href="https://github.com/hongseongug812-ui/pixel-project-hq">pixel-project-hq</a></h3>
-      <p>Pixel HQ is a TypeScript React application that provides an AI company's project management dashboard, allowing users to manage projects from a top-down view and interact with multiple AI agents for various tasks.</p>
-      <p><sub><b>TypeScript</b> · ★ 0 · Forks 0 · Updated 2026-03-21</sub></p>
+      <p><sub><b>JavaScript</b> · ★ 0 · 포크 0 · 업데이트 2026-04-04</sub></p>
     </td>
   
   
@@ -127,28 +127,28 @@
 
 <br>
 
-## Languages
+## 사용 언어
 
 <div align="center">
-  <img src="assets/languages.svg" width="100%" alt="Language distribution across featured repositories">
+  <img src="assets/languages.svg" width="100%" alt="대표 프로젝트의 언어 분포">
 </div>
 
 
 <br>
 
-## Activities
+## 활동 내역
 
 
 ### 2026
 
 
-- **hongseongug812-ui** <sub>2026</sub> — Python project
+- **auto-profile-curator** <sub>2026</sub> — GitHub 사용자명 하나로 완성하는 자동 프로필 README 생성 도구
 
-- **llm-bench-dashboard** <sub>2026</sub> — Python project
+- **hongseongug812-ui** <sub>2026</sub> — Python 프로젝트
 
-- **mc-devkit** <sub>2026</sub> — JavaScript project
+- **llm-bench-dashboard** <sub>2026</sub> — Python 프로젝트
 
-- **backend** <sub>2026</sub> — backend part
+- **mc-devkit** <sub>2026</sub> — JavaScript 프로젝트
 
 
 ### 2025
@@ -163,5 +163,4 @@
 
 ---
 
-<div align="center"><sub>Curated automatically from public repositories · Refreshed hourly</sub></div>
-
+<div align="center"><sub>공개 저장소를 기반으로 자동 큐레이션 · 매시간 갱신</sub></div>
