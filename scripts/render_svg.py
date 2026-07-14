@@ -28,7 +28,7 @@ def render(language_counts: Counter[str]) -> str:
             f'<text x="{label_x + 190}" y="{label_y}" text-anchor="end" class="percent">{count / total:.0%}</text>'
         )
         x += width
-    return """<svg xmlns="http://www.w3.org/2000/svg" width="700" height="178" viewBox="0 0 700 178" role="img" aria-label="Languages used across featured repositories">
+    return """<svg xmlns="http://www.w3.org/2000/svg" width="700" height="178" viewBox="0 0 700 178" role="img" aria-label="대표 프로젝트의 언어 분포">
 <style>
   .panel { fill: #f6f8fa; stroke: #d0d7de; }
   .title { fill: #1f2328; font: 600 18px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
@@ -41,8 +41,8 @@ def render(language_counts: Counter[str]) -> str:
   }
 </style>
 <rect class="panel" x="0.5" y="0.5" width="699" height="177" rx="8"/>
-<text x="24" y="34" class="title">Language mix</text>
-<text x="24" y="53" class="subtitle">Across automatically selected repositories</text>
+<text x="24" y="34" class="title">언어 사용 비율</text>
+<text x="24" y="53" class="subtitle">자동 선정된 저장소 기준</text>
 <clipPath id="bar"><rect x="24" y="70" width="652" height="14" rx="7"/></clipPath>
 <g clip-path="url(#bar)">""" + "".join(segments) + "</g><g>" + "".join(labels) + "</g></svg>"
 

@@ -33,7 +33,7 @@ def render(profile: dict, accent: str, repositories: list[dict]) -> str:
     latest_update = max((repo.get("last_commit_at") or "" for repo in repositories), default="")[:10] or "N/A"
     project_count = len(repositories)
 
-    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="900" height="320" viewBox="0 0 900 320" role="img" aria-label="Profile header for {name}">
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="900" height="320" viewBox="0 0 900 320" role="img" aria-label="{name}의 프로필 헤더">
 <style>
   .panel {{ fill: #ffffff; stroke: #d0d7de; }}
   .name {{ fill: #0d1117; font: 800 50px ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0; }}
@@ -55,15 +55,15 @@ def render(profile: dict, accent: str, repositories: list[dict]) -> str:
 </style>
 <rect class="panel" x="0.5" y="0.5" width="899" height="319" rx="8"/>
 <rect x="0" y="0" width="10" height="320" rx="5" fill="#{accent}"/>
-<text x="54" y="48" class="eyebrow">{username.upper()} / AUTO-CURATED PROFILE</text>
+<text x="54" y="48" class="eyebrow">{username.upper()} · 자동 큐레이션 프로필</text>
 <text x="54" y="118" class="name">{name}<animate attributeName="opacity" values="1;0.82;1" dur="4s" repeatCount="indefinite"/></text>
 <rect x="54" y="138" width="62" height="5" fill="#{accent}"/>
 <text x="54" y="164" class="headline">{headline}</text>
 {context_svg}
 <g transform="translate(54 226)">
-  <text x="0" y="18" class="stat-value">{project_count}</text><text x="0" y="39" class="stat-label">PUBLIC PROJECTS</text>
-  <text x="170" y="18" class="stat-value">{primary_language}</text><text x="170" y="39" class="stat-label">PRIMARY LANGUAGE</text>
-  <text x="390" y="18" class="stat-value">{latest_update}</text><text x="390" y="39" class="stat-label">LATEST UPDATE</text>
+  <text x="0" y="18" class="stat-value">{project_count}</text><text x="0" y="39" class="stat-label">공개 프로젝트</text>
+  <text x="170" y="18" class="stat-value">{primary_language}</text><text x="170" y="39" class="stat-label">주 사용 언어</text>
+  <text x="390" y="18" class="stat-value">{latest_update}</text><text x="390" y="39" class="stat-label">최근 업데이트</text>
 </g>
 <g transform="translate(680 54)">
   <g><animateTransform attributeName="transform" type="translate" values="0 0;0 -8;0 0" dur="3s" repeatCount="indefinite"/>

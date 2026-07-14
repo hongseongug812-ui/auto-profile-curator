@@ -1,4 +1,4 @@
-"""Render a deterministic dinosaur collection that grows every 100 commits."""
+"""Render a deterministic dinosaur collection: the active dino grows with every commit and a new one joins every 100 commits."""
 from __future__ import annotations
 
 import argparse
@@ -29,6 +29,11 @@ def dinosaur_collection(username: str, commits: int) -> list[dict]:
         choice = int.from_bytes(digest[:4], "big") % len(available)
         collection.append(DINOSAURS[available.pop(choice)])
     return collection
+
+
+def growth_scale(commits: int) -> float:
+    """0.5 (just hatched) growing linearly to 1.0 right before the next dino joins."""
+    return 0.5 + 0.5 * (commits % 100) / 100
 
 
 def species_features(dino: dict) -> str:
@@ -66,24 +71,25 @@ def render(username: str, commits: int) -> str:
     collection = dinosaur_collection(username, commits)
     active = collection[-1]
     remaining = 100 - commits % 100 if commits % 100 else 100
-    progress = 190 * (commits % 100) / 100
+    progress = 220 * (commits % 100) / 100
+    scale = growth_scale(commits)
     username_text = html.escape(username)
     dots = "".join(
         f'<circle cx="{8 + (index % 8) * 20}" cy="{148 + (index // 8) * 18}" r="6" fill="{dino["body"]}" stroke="{dino["dark"]}" stroke-width="2"/>'
         for index, dino in enumerate(collection[:16])
     )
-    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="900" height="400" viewBox="0 0 900 400" role="img" aria-label="Commit dinosaur for {username_text}">
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="900" height="400" viewBox="0 0 900 400" role="img" aria-label="{username_text}의 커밋 공룡">
 <style>
  .panel{{fill:#fff;stroke:#d0d7de}} .title{{fill:#1f2328;font:800 24px ui-monospace,SFMono-Regular,Menlo,monospace}} .text{{fill:#656d76;font:14px -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}} .strong{{fill:#1f2328;font:700 14px -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}}
  @media(prefers-color-scheme:dark){{.panel{{fill:#0d1117;stroke:#30363d}}.title,.strong{{fill:#f0f6fc}}.text{{fill:#8b949e}}}}
 </style>
 <rect class="panel" x=".5" y=".5" width="899" height="399" rx="8"/>
-<text x="34" y="48" class="title">{username_text}'s commit dinosaur</text>
-<text x="34" y="76" class="text">A new dinosaur is summoned for every 100 commits</text>
+<text x="34" y="48" class="title">{username_text}의 커밋 공룡</text>
+<text x="34" y="76" class="text">커밋할 때마다 자라나고, 100커밋마다 새 공룡이 태어나요</text>
 <ellipse cx="450" cy="350" rx="108" ry="16" fill="#8c959f" opacity=".18"/>
-<g><animateTransform attributeName="transform" type="translate" values="0 0;0 -6;0 0" dur="2.8s" repeatCount="indefinite"/>{dinosaur_svg(active)}</g>
-<g transform="translate(635 215)"><text class="strong" y="0">{html.escape(active['name'])}</text><text class="text" y="28">{commits} commits</text><text class="text" y="52">{len(collection)} dinos collected</text><text class="text" y="76">{remaining} commits to next</text>
-<rect y="94" width="220" height="10" rx="5" fill="#d8dee4"/><rect y="94" width="{progress * 220 / 190:.1f}" height="10" rx="5" fill="{active['accent']}"/><text class="text" y="128">COLLECTION</text>{dots}</g>
+<g transform="translate(450 230) scale({scale:.3f}) translate(-450 -230)"><animateTransform attributeName="transform" type="translate" values="0 0;0 -6;0 0" dur="2.8s" repeatCount="indefinite" additive="sum"/>{dinosaur_svg(active)}</g>
+<g transform="translate(635 215)"><text class="strong" y="0">{html.escape(active['name'])}</text><text class="text" y="28">{commits} 커밋</text><text class="text" y="52">공룡 {len(collection)}마리 수집</text><text class="text" y="76">다음 공룡까지 {remaining} 커밋</text>
+<rect y="94" width="220" height="10" rx="5" fill="#d8dee4"/><rect y="94" width="{progress:.1f}" height="10" rx="5" fill="{active['accent']}"/><text class="text" y="128">컬렉션</text>{dots}</g>
 </svg>"""
 
 

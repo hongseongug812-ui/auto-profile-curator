@@ -1,26 +1,26 @@
 <div align="center">
 
-<img src="{{ render.header_svg_path }}" width="100%" alt="{{ profile.name }} profile header">
+<img src="{{ render.header_svg_path }}" width="100%" alt="{{ profile.name }} 프로필 헤더">
 
 <br>
 
-<img src="{{ render.pet_svg_path }}" width="100%" alt="{{ profile.github_username }} commit dinosaur">
+<img src="{{ render.pet_svg_path }}" width="100%" alt="{{ profile.github_username }} 커밋 공룡">
 
 <br>
 
 {% if profile.introduction %}<p><b>{{ profile.introduction }}</b></p>{% endif %}
 
-<sub>Public repositories analyzed automatically · A new dinosaur every 100 commits · Refreshed every hour</sub>
+<sub>공개 저장소를 자동으로 분석 · 커밋마다 자라는 공룡 · 매시간 갱신</sub>
 
-<a href="https://github.com/{{ profile.github_username }}?tab=repositories">Repositories</a>
-{% if profile.email %} · <a href="mailto:{{ profile.email }}">Email</a>{% endif %}
-{% if profile.blog_url %} · <a href="{{ profile.blog_url }}">Blog</a>{% endif %}
+<a href="https://github.com/{{ profile.github_username }}?tab=repositories">저장소 보기</a>
+{% if profile.email %} · <a href="mailto:{{ profile.email }}">이메일</a>{% endif %}
+{% if profile.blog_url %} · <a href="{{ profile.blog_url }}">블로그</a>{% endif %}
 
 </div>
 
 <br>
 
-## Information
+## 소개
 
 {% if profile.story %}
 {{ profile.story }}
@@ -28,9 +28,9 @@
 
 {% if profile.affiliation or profile.interests or profile.certifications %}
 <table>
-  {% if profile.affiliation %}<tr><td><b>Current</b></td><td>{{ profile.affiliation }}</td></tr>{% endif %}
-  {% if profile.interests %}<tr><td><b>Interests</b></td><td>{{ profile.interests | join(' · ') }}</td></tr>{% endif %}
-  {% if profile.certifications %}<tr><td><b>Certifications</b></td><td>{{ profile.certifications | join(' · ') }}</td></tr>{% endif %}
+  {% if profile.affiliation %}<tr><td><b>소속</b></td><td>{{ profile.affiliation }}</td></tr>{% endif %}
+  {% if profile.interests %}<tr><td><b>관심 분야</b></td><td>{{ profile.interests | join(' · ') }}</td></tr>{% endif %}
+  {% if profile.certifications %}<tr><td><b>자격증</b></td><td>{{ profile.certifications | join(' · ') }}</td></tr>{% endif %}
 </table>
 {% endif %}
 
@@ -39,13 +39,13 @@
   <tr>
     {% if profile.strengths %}
     <td width="50%" valign="top">
-      <h3>What I bring</h3>
+      <h3>강점</h3>
       <ul>{% for item in profile.strengths %}<li>{{ item }}</li>{% endfor %}</ul>
     </td>
     {% endif %}
     {% if profile.current_focus %}
     <td width="50%" valign="top">
-      <h3>Currently focused on</h3>
+      <h3>현재 집중하는 것</h3>
       <ul>{% for item in profile.current_focus %}<li>{{ item }}</li>{% endfor %}</ul>
     </td>
     {% endif %}
@@ -57,20 +57,20 @@
 {% if has_stacks or development_tools %}
 <br>
 
-## Dev Stacks
+## 기술 스택
 
 <table>
-  {% if stacks.get('ai_cloud') %}<tr><td><b>AI & Cloud</b></td><td>{% for item in stacks.ai_cloud %}<code>{{ item }}</code>{% if not loop.last %} &nbsp;{% endif %}{% endfor %}</td></tr>{% endif %}
-  {% if stacks.get('back_end') %}<tr><td><b>Back-end</b></td><td>{% for item in stacks.back_end %}<code>{{ item }}</code>{% if not loop.last %} &nbsp;{% endif %}{% endfor %}</td></tr>{% endif %}
-  {% if stacks.get('front_end') %}<tr><td><b>Front-end</b></td><td>{% for item in stacks.front_end %}<code>{{ item }}</code>{% if not loop.last %} &nbsp;{% endif %}{% endfor %}</td></tr>{% endif %}
-  {% if stacks.get('database') %}<tr><td><b>Database</b></td><td>{% for item in stacks.database %}<code>{{ item }}</code>{% if not loop.last %} &nbsp;{% endif %}{% endfor %}</td></tr>{% endif %}
-  {% if development_tools %}<tr><td><b>Tools</b></td><td>{% for item in development_tools %}<code>{{ item }}</code>{% if not loop.last %} &nbsp;{% endif %}{% endfor %}</td></tr>{% endif %}
+  {% if stacks.get('ai_cloud') %}<tr><td><b>AI & 클라우드</b></td><td>{% for item in stacks.ai_cloud %}<code>{{ item }}</code>{% if not loop.last %} &nbsp;{% endif %}{% endfor %}</td></tr>{% endif %}
+  {% if stacks.get('back_end') %}<tr><td><b>백엔드</b></td><td>{% for item in stacks.back_end %}<code>{{ item }}</code>{% if not loop.last %} &nbsp;{% endif %}{% endfor %}</td></tr>{% endif %}
+  {% if stacks.get('front_end') %}<tr><td><b>프론트엔드</b></td><td>{% for item in stacks.front_end %}<code>{{ item }}</code>{% if not loop.last %} &nbsp;{% endif %}{% endfor %}</td></tr>{% endif %}
+  {% if stacks.get('database') %}<tr><td><b>데이터베이스</b></td><td>{% for item in stacks.database %}<code>{{ item }}</code>{% if not loop.last %} &nbsp;{% endif %}{% endfor %}</td></tr>{% endif %}
+  {% if development_tools %}<tr><td><b>개발 도구</b></td><td>{% for item in development_tools %}<code>{{ item }}</code>{% if not loop.last %} &nbsp;{% endif %}{% endfor %}</td></tr>{% endif %}
 </table>
 {% endif %}
 
 <br>
 
-## Featured Repositories
+## 대표 프로젝트
 
 <table>
 {% for row in repositories | batch(2) %}
@@ -79,7 +79,7 @@
     <td width="50%" valign="top">
       <h3><a href="{{ repo.url }}">{{ repo.name }}</a></h3>
       <p>{{ repo.summary }}</p>
-      <p><sub>{% if repo.primary_language %}<b>{{ repo.primary_language.name }}</b> · {% endif %}★ {{ repo.stars }} · Forks {{ repo.forks }} · Updated {{ repo.last_commit_at[:10] if repo.last_commit_at else 'N/A' }}</sub></p>
+      <p><sub>{% if repo.primary_language %}<b>{{ repo.primary_language.name }}</b> · {% endif %}★ {{ repo.stars }} · 포크 {{ repo.forks }} · 업데이트 {{ repo.last_commit_at[:10] if repo.last_commit_at else '정보 없음' }}</sub></p>
     </td>
   {% endfor %}
   {% if row | length == 1 %}<td width="50%"></td>{% endif %}
@@ -89,16 +89,16 @@
 
 <br>
 
-## Languages
+## 사용 언어
 
 <div align="center">
-  <img src="{{ render.language_svg_path }}" width="100%" alt="Language distribution across featured repositories">
+  <img src="{{ render.language_svg_path }}" width="100%" alt="대표 프로젝트의 언어 분포">
 </div>
 
 {% if activities %}
 <br>
 
-## Activities
+## 활동 내역
 
 {% for group in activities %}
 ### {{ group.year }}
@@ -111,4 +111,4 @@
 
 ---
 
-<div align="center"><sub>Curated automatically from public repositories · Refreshed hourly</sub></div>
+<div align="center"><sub>공개 저장소를 기반으로 자동 큐레이션 · 매시간 갱신</sub></div>

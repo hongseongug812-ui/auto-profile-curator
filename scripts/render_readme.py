@@ -13,7 +13,7 @@ from llm_provider import summarize
 
 
 def fallback_summary(repo: dict) -> str:
-    return repo.get("description") or "An open-source project maintained here."
+    return repo.get("description") or "이 저장소에서 관리 중인 오픈소스 프로젝트입니다."
 
 
 def enrich(repositories: list[dict], settings: dict, cache: dict) -> list[dict]:
@@ -37,11 +37,19 @@ def enrich(repositories: list[dict], settings: dict, cache: dict) -> list[dict]:
 
 
 ROLE_SIGNALS = {
-    "AI / LLM Developer": ("ai", "llm", "agent", "gemma", "openai", "pytorch", "model", "reviewer", "automation"),
-    "Full-stack Developer": ("react", "next.js", "typescript", "javascript", "web", "app", "platform", "supabase"),
-    "Backend Developer": ("backend", "api", "server", "spring", "fastapi", "java", "kotlin"),
-    "Cloud / DevOps Developer": ("cloud", "aws", "infra", "docker", "kubernetes", "deploy"),
-    "Game Developer": ("game", "unity", "shader", "tft"),
+    "AI/LLM 개발자": ("ai", "llm", "agent", "gemma", "openai", "pytorch", "model", "reviewer", "automation"),
+    "풀스택 개발자": ("react", "next.js", "typescript", "javascript", "web", "app", "platform", "supabase"),
+    "백엔드 개발자": ("backend", "api", "server", "spring", "fastapi", "java", "kotlin"),
+    "클라우드/DevOps 개발자": ("cloud", "aws", "infra", "docker", "kubernetes", "deploy"),
+    "게임 개발자": ("game", "unity", "shader", "tft"),
+}
+
+ROLE_FOCUS_LABEL = {
+    "AI/LLM 개발자": "AI/LLM",
+    "풀스택 개발자": "풀스택",
+    "백엔드 개발자": "백엔드",
+    "클라우드/DevOps 개발자": "클라우드/DevOps",
+    "게임 개발자": "게임",
 }
 
 TECH_SIGNALS = {
@@ -64,8 +72,8 @@ def infer_role(repositories: list[dict]) -> tuple[str, list[str]]:
         text = repository_text(repo)
         for role, keywords in ROLE_SIGNALS.items():
             scores[role] += sum(1 for keyword in keywords if keyword in text)
-    role = scores.most_common(1)[0][0] if scores else "Software Developer"
-    focus = [name.replace(" Developer", "") for name, score in scores.most_common(3) if score > 0]
+    role = scores.most_common(1)[0][0] if scores else "소프트웨어 개발자"
+    focus = [ROLE_FOCUS_LABEL[name] for name, score in scores.most_common(3) if score > 0]
     return role, focus
 
 
@@ -109,7 +117,7 @@ def infer_activities(repositories: list[dict]) -> list[dict]:
         for repo in by_year[year][:4]:
             items.append({
                 "title": repo["name"],
-                "description": repo.get("description") or f"{(repo.get('primary_language') or {}).get('name', 'Software')} project",
+                "description": repo.get("description") or f"{(repo.get('primary_language') or {}).get('name', '소프트웨어')} 프로젝트",
                 "period": year,
             })
         activities.append({"year": year, "items": items})
@@ -147,11 +155,11 @@ def main() -> None:
         ))[:3]
         profile["interests"] = inferred_focus + languages
     if not profile.get("current_focus"):
-        profile["current_focus"] = [f"Building {focus} projects" for focus in inferred_focus[:2]]
+        profile["current_focus"] = [f"{focus} 프로젝트 진행 중" for focus in inferred_focus[:2]]
     if not profile.get("strengths"):
         profile["strengths"] = [
-            f"Hands-on experience across {len(all_repositories)} public repositories",
-            f"Product development with {', '.join(profile['interests'][-3:])}",
+            f"공개 저장소 {len(all_repositories)}개를 통한 실전 경험",
+            f"{', '.join(profile['interests'][-3:])} 기반 제품 개발 경험",
         ]
     environment = Environment(loader=FileSystemLoader("templates"), autoescape=select_autoescape())
     stacks = config.get("stacks", {}).copy()

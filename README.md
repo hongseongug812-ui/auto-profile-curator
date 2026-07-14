@@ -158,6 +158,18 @@ export GITHUB_TOKEN=github_pat_xxx
 
 <br>
 
+## 로컬 대시보드로 실행하기
+
+스크립트를 하나씩 실행하는 대신, 브라우저에서 `config.yml`을 수정하고 파이프라인을 바로 실행할 수 있습니다.
+
+```bash
+python scripts/dashboard.py
+```
+
+`http://127.0.0.1:8787`가 자동으로 열리며, 값을 입력하고 **저장하고 파이프라인 실행**을 누르면 `config.yml`이 갱신되고 fetch → score → render 전체 단계가 순서대로 실행됩니다. 결과 헤더·펫·언어 SVG와 README는 같은 페이지에서 바로 미리볼 수 있습니다.
+
+<br>
+
 ## AI 요약
 
 기본 설정은 GitHub Actions 러너에서 Ollama와 `qwen2.5:3b-instruct`를 실행합니다. 프로젝트 README 요약 내용은 SHA별로 캐시되어 변경되지 않은 저장소를 반복 처리하지 않습니다.

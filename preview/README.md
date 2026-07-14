@@ -1,18 +1,18 @@
 <div align="center">
 
-<img src="assets/header.svg" width="100%" alt="hsu profile header">
+<img src="assets/header.svg" width="100%" alt="hsu 프로필 헤더">
 
 <br>
 
-<img src="assets/pet.svg" width="100%" alt="hongseongug812-ui commit dinosaur">
+<img src="assets/pet.svg" width="100%" alt="hongseongug812-ui 커밋 공룡">
 
 <br>
 
 <p><b>CS major · Cloud minor | Building things with AI</b></p>
 
-<sub>Public repositories analyzed automatically · A new dinosaur every 100 commits · Refreshed every hour</sub>
+<sub>공개 저장소를 자동으로 분석 · 커밋마다 자라는 공룡 · 매시간 갱신</sub>
 
-<a href="https://github.com/hongseongug812-ui?tab=repositories">Repositories</a>
+<a href="https://github.com/hongseongug812-ui?tab=repositories">저장소 보기</a>
 
 
 
@@ -20,14 +20,14 @@
 
 <br>
 
-## Information
+## 소개
 
 
 
 
 <table>
   
-  <tr><td><b>Interests</b></td><td>AI / LLM · Full-stack · Game · Python · JavaScript · Java</td></tr>
+  <tr><td><b>관심 분야</b></td><td>AI/LLM · 풀스택 · 게임 · Python · JavaScript · Java</td></tr>
   
 </table>
 
@@ -37,14 +37,14 @@
   <tr>
     
     <td width="50%" valign="top">
-      <h3>What I bring</h3>
-      <ul><li>Hands-on experience across 20 public repositories</li><li>Product development with Python, JavaScript, Java</li></ul>
+      <h3>강점</h3>
+      <ul><li>공개 저장소 22개를 통한 실전 경험</li><li>Python, JavaScript, Java 기반 제품 개발 경험</li></ul>
     </td>
     
     
     <td width="50%" valign="top">
-      <h3>Currently focused on</h3>
-      <ul><li>Building AI / LLM projects</li><li>Building Full-stack projects</li></ul>
+      <h3>현재 집중하는 것</h3>
+      <ul><li>AI/LLM 프로젝트 진행 중</li><li>풀스택 프로젝트 진행 중</li></ul>
     </td>
     
   </tr>
@@ -55,35 +55,52 @@
 
 <br>
 
-## Dev Stacks
+## 기술 스택
 
 <table>
-  <tr><td><b>AI & Cloud</b></td><td><code>OpenAI</code> &nbsp;<code>LLM</code> &nbsp;<code>PyTorch</code> &nbsp;<code>Gemma</code> &nbsp;<code>AWS</code></td></tr>
-  <tr><td><b>Back-end</b></td><td><code>FastAPI</code> &nbsp;<code>Python</code> &nbsp;<code>Java</code> &nbsp;<code>Kotlin</code></td></tr>
-  <tr><td><b>Front-end</b></td><td><code>React</code> &nbsp;<code>Next.js</code> &nbsp;<code>TypeScript</code> &nbsp;<code>JavaScript</code></td></tr>
-  <tr><td><b>Database</b></td><td><code>Supabase</code></td></tr>
+  <tr><td><b>AI & 클라우드</b></td><td><code>OpenAI</code> &nbsp;<code>LLM</code> &nbsp;<code>PyTorch</code> &nbsp;<code>Gemma</code> &nbsp;<code>AWS</code></td></tr>
+  <tr><td><b>백엔드</b></td><td><code>FastAPI</code> &nbsp;<code>Python</code> &nbsp;<code>Java</code> &nbsp;<code>Kotlin</code></td></tr>
+  <tr><td><b>프론트엔드</b></td><td><code>React</code> &nbsp;<code>Next.js</code> &nbsp;<code>TypeScript</code> &nbsp;<code>JavaScript</code></td></tr>
+  <tr><td><b>데이터베이스</b></td><td><code>Supabase</code></td></tr>
   
 </table>
 
 
 <br>
 
-## Featured Repositories
+## 대표 프로젝트
 
 <table>
 
   <tr>
   
     <td width="50%" valign="top">
+      <h3><a href="https://github.com/hongseongug812-ui/auto-profile-curator">auto-profile-curator</a></h3>
+      <p>GitHub 사용자명 하나로 완성하는 자동 프로필 README 생성 도구</p>
+      <p><sub><b>Python</b> · ★ 0 · 포크 0 · 업데이트 2026-07-14</sub></p>
+    </td>
+  
+    <td width="50%" valign="top">
       <h3><a href="https://github.com/hongseongug812-ui/llm-bench-dashboard">llm-bench-dashboard</a></h3>
-      <p>An open-source project maintained here.</p>
-      <p><sub><b>Python</b> · ★ 0 · Forks 0 · Updated 2026-07-14</sub></p>
+      <p>이 저장소에서 관리 중인 오픈소스 프로젝트입니다.</p>
+      <p><sub><b>Python</b> · ★ 0 · 포크 0 · 업데이트 2026-07-14</sub></p>
+    </td>
+  
+  
+  </tr>
+
+  <tr>
+  
+    <td width="50%" valign="top">
+      <h3><a href="https://github.com/hongseongug812-ui/hongseongug812-ui">hongseongug812-ui</a></h3>
+      <p>이 저장소에서 관리 중인 오픈소스 프로젝트입니다.</p>
+      <p><sub><b>Python</b> · ★ 0 · 포크 0 · 업데이트 2026-07-14</sub></p>
     </td>
   
     <td width="50%" valign="top">
       <h3><a href="https://github.com/hongseongug812-ui/mc-devkit">mc-devkit</a></h3>
-      <p>An open-source project maintained here.</p>
-      <p><sub><b>JavaScript</b> · ★ 0 · Forks 0 · Updated 2026-07-12</sub></p>
+      <p>이 저장소에서 관리 중인 오픈소스 프로젝트입니다.</p>
+      <p><sub><b>JavaScript</b> · ★ 0 · 포크 0 · 업데이트 2026-07-12</sub></p>
     </td>
   
   
@@ -94,30 +111,13 @@
     <td width="50%" valign="top">
       <h3><a href="https://github.com/hongseongug812-ui/debete-arena">debete-arena</a></h3>
       <p>멀티 에이전트 LLM이 실시간 SSE 스트리밍으로 토론하고 수렴 판단까지 자동화한 AI 의사결정 플랫폼</p>
-      <p><sub><b>Python</b> · ★ 0 · Forks 0 · Updated 2026-04-06</sub></p>
+      <p><sub><b>Python</b> · ★ 0 · 포크 0 · 업데이트 2026-04-06</sub></p>
     </td>
   
     <td width="50%" valign="top">
       <h3><a href="https://github.com/hongseongug812-ui/chat2infra">chat2infra</a></h3>
       <p>비싼 클라우드 엔지니어 없이, 채팅 한 줄로 AWS 서버를 자동 구축하고 관리하는 AI 인프라 비서 서비스입니다</p>
-      <p><sub><b>JavaScript</b> · ★ 0 · Forks 0 · Updated 2026-04-05</sub></p>
-    </td>
-  
-  
-  </tr>
-
-  <tr>
-  
-    <td width="50%" valign="top">
-      <h3><a href="https://github.com/hongseongug812-ui/safewave">safewave</a></h3>
-      <p>WiFi CSI 기반 비접촉 AI 안전관리 플랫폼 | FastAPI + PyTorch CNN-GRU 모델로 낙상·침입 등 6가지 행동 분류</p>
-      <p><sub><b>JavaScript</b> · ★ 0 · Forks 0 · Updated 2026-04-04</sub></p>
-    </td>
-  
-    <td width="50%" valign="top">
-      <h3><a href="https://github.com/hongseongug812-ui/pixel-project-hq">pixel-project-hq</a></h3>
-      <p>픽셀 아트 오피스 기반 AI 프로젝트 관리 앱 | React + OpenAI GPT-4o + Supabase Realtime, 6종 AI 에이전트</p>
-      <p><sub><b>TypeScript</b> · ★ 0 · Forks 0 · Updated 2026-03-21</sub></p>
+      <p><sub><b>JavaScript</b> · ★ 0 · 포크 0 · 업데이트 2026-04-05</sub></p>
     </td>
   
   
@@ -127,28 +127,28 @@
 
 <br>
 
-## Languages
+## 사용 언어
 
 <div align="center">
-  <img src="assets/languages.svg" width="100%" alt="Language distribution across featured repositories">
+  <img src="assets/languages.svg" width="100%" alt="대표 프로젝트의 언어 분포">
 </div>
 
 
 <br>
 
-## Activities
+## 활동 내역
 
 
 ### 2026
 
 
-- **llm-bench-dashboard** <sub>2026</sub> — Python project
+- **auto-profile-curator** <sub>2026</sub> — GitHub 사용자명 하나로 완성하는 자동 프로필 README 생성 도구
 
-- **mc-devkit** <sub>2026</sub> — JavaScript project
+- **llm-bench-dashboard** <sub>2026</sub> — Python 프로젝트
 
-- **backend** <sub>2026</sub> — backend part
+- **hongseongug812-ui** <sub>2026</sub> — Python 프로젝트
 
-- **arkpvptool** <sub>2026</sub> — ARK: Survival Evolved PVP 분석 웹툴 | React + TypeScript
+- **mc-devkit** <sub>2026</sub> — JavaScript 프로젝트
 
 
 ### 2025
@@ -163,4 +163,4 @@
 
 ---
 
-<div align="center"><sub>Curated automatically from public repositories · Refreshed hourly</sub></div>
+<div align="center"><sub>공개 저장소를 기반으로 자동 큐레이션 · 매시간 갱신</sub></div>

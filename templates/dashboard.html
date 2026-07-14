@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auto Profile Curator — Dashboard</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; line-height: 1.5; }
+  h1 { font-size: 22px; margin-bottom: 4px; }
+  .sub { color: #6b7280; font-size: 14px; margin-bottom: 28px; }
+  fieldset { border: 1px solid #d1d5db; border-radius: 10px; padding: 16px 20px 20px; margin-bottom: 20px; }
+  legend { font-weight: 600; padding: 0 6px; }
+  label { display: block; font-size: 13px; font-weight: 600; margin: 12px 0 4px; }
+  label .hint { font-weight: 400; color: #6b7280; }
+  input[type=text], input[type=email], input[type=url], textarea, select {
+    width: 100%; box-sizing: border-box; padding: 8px 10px; border: 1px solid #d1d5db;
+    border-radius: 6px; font-size: 14px; font-family: inherit;
+  }
+  textarea { min-height: 64px; resize: vertical; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+  .color-row { display: flex; align-items: center; gap: 10px; }
+  .color-row input[type=color] { width: 44px; height: 34px; padding: 2px; }
+  button { background: #7c5cfc; color: white; border: none; border-radius: 8px; padding: 12px 22px; font-size: 15px; font-weight: 600; cursor: pointer; }
+  button:hover { background: #6a4be0; }
+  .log { border: 1px solid #d1d5db; border-radius: 10px; padding: 16px 20px; margin-bottom: 20px; }
+  .step { padding: 6px 0; border-bottom: 1px solid #eee; font-size: 14px; }
+  .step:last-child { border-bottom: none; }
+  .step.ok::before { content: "✓ "; color: #16a34a; font-weight: 700; }
+  .step.fail::before { content: "✗ "; color: #dc2626; font-weight: 700; }
+  pre { background: #111827; color: #e5e7eb; padding: 10px 12px; border-radius: 6px; font-size: 12px; overflow-x: auto; white-space: pre-wrap; }
+  .previews { display: grid; gap: 16px; margin-bottom: 20px; }
+  .previews img { width: 100%; border: 1px solid #e5e7eb; border-radius: 10px; background: #fff; }
+  a.readme-link { display: inline-block; margin-top: 4px; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<h1>Auto Profile Curator</h1>
+<p class="sub">config.yml을 수정하고 파이프라인(fetch → score → render)을 로컬에서 바로 실행합니다. 값을 비워두면 저장소 분석으로 자동 채워집니다.</p>
+
+{% if status %}
+<div class="log">
+  {% for step in status %}
+  <div class="step {{ 'ok' if step.ok else 'fail' }}">{{ step.label }}</div>
+  {% if not step.ok %}<pre>{{ step.output }}</pre>{% endif %}
+  {% endfor %}
+</div>
+{% endif %}
+
+{% if assets_ready %}
+<div class="previews">
+  <img src="/assets/header.svg?v={{ cache_bust }}" alt="header preview">
+  <img src="/assets/pet.svg?v={{ cache_bust }}" alt="pet preview">
+  <img src="/assets/languages.svg?v={{ cache_bust }}" alt="languages preview">
+</div>
+{% if readme_exists %}<a class="readme-link" href="/readme" target="_blank">생성된 README.md 원문 보기 →</a>{% endif %}
+{% endif %}
+
+<form method="post" action="/run">
+  <fieldset>
+    <legend>기본 정보</legend>
+    <label>GitHub 사용자명</label>
+    <input type="text" name="github_username" value="{{ profile.github_username or '' }}" required>
+
+    <div class="grid2">
+      <div>
+        <label>표시 이름 <span class="hint">(비우면 GitHub 이름 사용)</span></label>
+        <input type="text" name="name" value="{{ profile.name or '' }}">
+      </div>
+      <div>
+        <label>역할/헤드라인 <span class="hint">(비우면 저장소로 추론)</span></label>
+        <input type="text" name="headline" value="{{ profile.headline or '' }}">
+      </div>
+    </div>
+
+    <label>한 줄 소개</label>
+    <input type="text" name="introduction" value="{{ profile.introduction or '' }}">
+
+    <label>스토리 <span class="hint">(선택, 2~5문장)</span></label>
+    <textarea name="story">{{ profile.story or '' }}</textarea>
+
+    <div class="grid2">
+      <div>
+        <label>소속</label>
+        <input type="text" name="affiliation" value="{{ profile.affiliation or '' }}">
+      </div>
+      <div>
+        <label>이메일</label>
+        <input type="email" name="email" value="{{ profile.email or '' }}">
+      </div>
+    </div>
+    <label>블로그 URL</label>
+    <input type="url" name="blog_url" value="{{ profile.blog_url or '' }}">
+  </fieldset>
+
+  <fieldset>
+    <legend>관심사 · 강점 · 자격증 <span class="hint" style="font-weight:400;font-size:12px;">(한 줄에 하나씩, 비우면 자동 추론)</span></legend>
+    <div class="grid2">
+      <div>
+        <label>관심 분야</label>
+        <textarea name="interests">{{ list_fields.interests }}</textarea>
+      </div>
+      <div>
+        <label>현재 집중 분야</label>
+        <textarea name="current_focus">{{ list_fields.current_focus }}</textarea>
+      </div>
+    </div>
+    <div class="grid2">
+      <div>
+        <label>강점</label>
+        <textarea name="strengths">{{ list_fields.strengths }}</textarea>
+      </div>
+      <div>
+        <label>자격증</label>
+        <textarea name="certifications">{{ list_fields.certifications }}</textarea>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>기술 스택 <span class="hint" style="font-weight:400;font-size:12px;">(쉼표로 구분, 비우면 자동 추론)</span></legend>
+    <div class="grid2">
+      <div>
+        <label>AI &amp; Cloud</label>
+        <input type="text" name="stack_ai_cloud" value="{{ stacks.ai_cloud | join(', ') if stacks.ai_cloud else '' }}">
+      </div>
+      <div>
+        <label>Back-end</label>
+        <input type="text" name="stack_back_end" value="{{ stacks.back_end | join(', ') if stacks.back_end else '' }}">
+      </div>
+    </div>
+    <div class="grid2">
+      <div>
+        <label>Front-end</label>
+        <input type="text" name="stack_front_end" value="{{ stacks.front_end | join(', ') if stacks.front_end else '' }}">
+      </div>
+      <div>
+        <label>Database</label>
+        <input type="text" name="stack_database" value="{{ stacks.database | join(', ') if stacks.database else '' }}">
+      </div>
+    </div>
+    <label>개발 도구</label>
+    <input type="text" name="development_tools" value="{{ development_tools }}">
+  </fieldset>
+
+  <fieldset>
+    <legend>렌더링</legend>
+    <label>요약 모델 제공자</label>
+    <select name="llm_provider">
+      <option value="local" {{ "selected" if llm_provider == "local" else "" }}>local (Ollama)</option>
+      <option value="cloud" {{ "selected" if llm_provider == "cloud" else "" }}>cloud (Anthropic)</option>
+    </select>
+    <label>테마 색상</label>
+    <div class="color-row">
+      <input type="color" id="theme_color_picker" value="#{{ theme_color }}">
+      <input type="text" name="theme_color" id="theme_color_text" value="{{ theme_color }}">
+    </div>
+  </fieldset>
+
+  <button type="submit">저장하고 파이프라인 실행</button>
+</form>
+
+<script>
+  const picker = document.getElementById("theme_color_picker");
+  const text = document.getElementById("theme_color_text");
+  picker.addEventListener("input", () => { text.value = picker.value.replace("#", ""); });
+</script>
+
+</body>
+</html>
