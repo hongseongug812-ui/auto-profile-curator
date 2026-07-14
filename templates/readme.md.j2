@@ -4,13 +4,9 @@
 
 <br>
 
-<img src="{{ render.pet_svg_path }}" width="100%" alt="{{ profile.github_username }} 커밋 공룡">
-
-<br>
-
 {% if profile.introduction %}<p><b>{{ profile.introduction }}</b></p>{% endif %}
 
-<sub>공개 저장소를 자동으로 분석 · 커밋마다 자라는 공룡 · 매시간 갱신</sub>
+<sub>공개 저장소를 자동으로 분석 · 매시간 갱신</sub>
 
 <a href="https://github.com/{{ profile.github_username }}?tab=repositories">저장소 보기</a>
 {% if profile.email %} · <a href="mailto:{{ profile.email }}">이메일</a>{% endif %}
@@ -78,7 +74,7 @@
   {% for repo in row %}
     <td width="50%" valign="top">
       <h3><a href="{{ repo.url }}">{{ repo.name }}</a></h3>
-      <p>{{ repo.summary }}</p>
+      <p><a href="{{ repo.url }}">{{ repo.summary }}</a></p>
       <p><sub>{% if repo.primary_language %}<b>{{ repo.primary_language.name }}</b> · {% endif %}★ {{ repo.stars }} · 포크 {{ repo.forks }} · 업데이트 {{ repo.last_commit_at[:10] if repo.last_commit_at else '정보 없음' }}</sub></p>
     </td>
   {% endfor %}

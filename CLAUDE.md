@@ -1,6 +1,6 @@
 # CLAUDE.md — Auto Profile Curator 작업 지침
 
-> GitHub 사용자명 하나로 공개 저장소를 분석해 GitHub 프로필 README(헤더 SVG, 기술 스택, 대표 프로젝트, 언어 비율, 커밋 기반 펫 컬렉션)를 자동 생성·갱신하는 프로젝트.
+> GitHub 사용자명 하나로 공개 저장소를 분석해 GitHub 프로필 README(헤더 SVG, 기술 스택, 대표 프로젝트, 언어 비율)를 자동 생성·갱신하는 프로젝트.
 > 목적: 토큰/외부 API 키 없이도 동작하는 완전 자동화된 "살아있는" 프로필 README 제공.
 
 ## 1. 파이프라인 개요
@@ -12,7 +12,6 @@ GitHub 사용자명
   → fetch_repos.py      (공개 프로필·저장소 수집 → repos.json)
   → score_projects.py   (역할/기술 추론 + 대표 프로젝트 점수화 → curated.json)
   → render_header.py    (header.svg)
-  → render_pet.py       (pet.svg, 누적 커밋 100회마다 새 공룡)
   → render_svg.py       (languages.svg)
   → render_readme.py    (templates/readme.md.j2 → README.md)
 ```
@@ -28,7 +27,7 @@ GitHub 사용자명
 - 핵심 파이프라인은 유료 서비스 없이 동작해야 함 (`CONTRIBUTING.md` 원칙). 기본 LLM 요약은 Ollama 로컬 모델(`qwen2.5:3b-instruct`)이며, `llm.provider: cloud`는 선택 사항으로만 유지.
 - 대표 프로젝트 선정 로직(`score_projects.py`)에서 포크·보관 저장소는 계속 제외 대상으로 유지.
 - 생성된 산출물(`preview/`, `.cache/`, 개인 README 내용)을 템플릿 저장소 자체에 커밋하지 않는다.
-- 스크립트나 템플릿 수정 시 관련 유닛 테스트(`tests/test_score_projects.py`, `tests/test_render_pet.py` 등)를 추가·갱신.
+- 스크립트나 템플릿 수정 시 관련 유닛 테스트(`tests/test_score_projects.py`, `tests/test_dashboard.py` 등)를 추가·갱신.
 
 ## 3. 작업 방식
 
@@ -40,7 +39,6 @@ GitHub 사용자명
    python scripts/fetch_repos.py --username <user> --output .cache/repos.json
    python scripts/score_projects.py --input .cache/repos.json --output .cache/curated.json
    python scripts/render_header.py --config config.yml --input .cache/curated.json --output preview/assets/header.svg
-   python scripts/render_pet.py --input .cache/curated.json --output preview/assets/pet.svg
    python scripts/render_svg.py --input .cache/curated.json --output preview/assets/languages.svg
    python scripts/render_readme.py --input .cache/curated.json --output preview/README.md
    ```

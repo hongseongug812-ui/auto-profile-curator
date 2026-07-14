@@ -42,7 +42,6 @@ jobs:
           python scripts/fetch_repos.py --output .cache/repos.json
           python scripts/score_projects.py --input .cache/repos.json --output .cache/curated.json
           python scripts/render_header.py --config config.yml --input .cache/curated.json --output assets/header.svg
-          python scripts/render_pet.py --input .cache/curated.json --output assets/pet.svg
           python scripts/render_svg.py --input .cache/curated.json --output assets/languages.svg
           python scripts/render_readme.py --input .cache/curated.json --output README.md
 
@@ -50,7 +49,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md assets/header.svg assets/pet.svg assets/languages.svg .cache/summaries.json
+          git add README.md assets/header.svg assets/languages.svg .cache/summaries.json
+          git rm -q --ignore-unmatch assets/pet.svg
           git diff --cached --quiet || git commit -m "chore: refresh profile from repository activity"
           git push
 

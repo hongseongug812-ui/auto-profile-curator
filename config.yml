@@ -54,5 +54,4 @@ llm:
 render:
   theme_color: "7c5cfc"
   header_svg_path: assets/header.svg
-  pet_svg_path: assets/pet.svg
   language_svg_path: assets/languages.svg

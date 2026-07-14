@@ -25,7 +25,6 @@ PIPELINE_STEPS = [
     ("Fetch repositories", [sys.executable, "scripts/fetch_repos.py", "--output", ".cache/repos.json"]),
     ("Score projects", [sys.executable, "scripts/score_projects.py", "--input", ".cache/repos.json", "--output", ".cache/curated.json"]),
     ("Render header", [sys.executable, "scripts/render_header.py", "--input", ".cache/curated.json", "--output", "preview/assets/header.svg"]),
-    ("Render pet", [sys.executable, "scripts/render_pet.py", "--input", ".cache/curated.json", "--output", "preview/assets/pet.svg"]),
     ("Render languages", [sys.executable, "scripts/render_svg.py", "--input", ".cache/curated.json", "--output", "preview/assets/languages.svg"]),
     ("Render README", [sys.executable, "scripts/render_readme.py", "--input", ".cache/curated.json", "--output", "preview/README.md", "--cache", ".cache/summaries.json"]),
 ]

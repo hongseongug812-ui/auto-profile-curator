@@ -4,13 +4,9 @@
 
 <br>
 
-<img src="assets/pet.svg" width="100%" alt="hongseongug812-ui 커밋 공룡">
-
-<br>
-
 <p><b>CS major · Cloud minor | Building things with AI</b></p>
 
-<sub>공개 저장소를 자동으로 분석 · 커밋마다 자라는 공룡 · 매시간 갱신</sub>
+<sub>공개 저장소를 자동으로 분석 · 매시간 갱신</sub>
 
 <a href="https://github.com/hongseongug812-ui?tab=repositories">저장소 보기</a>
 
@@ -76,13 +72,13 @@
   
     <td width="50%" valign="top">
       <h3><a href="https://github.com/hongseongug812-ui/auto-profile-curator">auto-profile-curator</a></h3>
-      <p>GitHub 사용자명 하나로 완성하는 자동 프로필 README 생성 도구</p>
+      <p><a href="https://github.com/hongseongug812-ui/auto-profile-curator">GitHub 사용자명 하나로 완성하는 자동 프로필 README 생성 도구</a></p>
       <p><sub><b>Python</b> · ★ 0 · 포크 0 · 업데이트 2026-07-14</sub></p>
     </td>
   
     <td width="50%" valign="top">
       <h3><a href="https://github.com/hongseongug812-ui/llm-bench-dashboard">llm-bench-dashboard</a></h3>
-      <p>이 저장소에서 관리 중인 오픈소스 프로젝트입니다.</p>
+      <p><a href="https://github.com/hongseongug812-ui/llm-bench-dashboard">이 저장소에서 관리 중인 오픈소스 프로젝트입니다.</a></p>
       <p><sub><b>Python</b> · ★ 0 · 포크 0 · 업데이트 2026-07-14</sub></p>
     </td>
   
@@ -93,13 +89,13 @@
   
     <td width="50%" valign="top">
       <h3><a href="https://github.com/hongseongug812-ui/hongseongug812-ui">hongseongug812-ui</a></h3>
-      <p>이 저장소에서 관리 중인 오픈소스 프로젝트입니다.</p>
+      <p><a href="https://github.com/hongseongug812-ui/hongseongug812-ui">이 저장소에서 관리 중인 오픈소스 프로젝트입니다.</a></p>
       <p><sub><b>Python</b> · ★ 0 · 포크 0 · 업데이트 2026-07-14</sub></p>
     </td>
   
     <td width="50%" valign="top">
       <h3><a href="https://github.com/hongseongug812-ui/mc-devkit">mc-devkit</a></h3>
-      <p>이 저장소에서 관리 중인 오픈소스 프로젝트입니다.</p>
+      <p><a href="https://github.com/hongseongug812-ui/mc-devkit">이 저장소에서 관리 중인 오픈소스 프로젝트입니다.</a></p>
       <p><sub><b>JavaScript</b> · ★ 0 · 포크 0 · 업데이트 2026-07-12</sub></p>
     </td>
   
@@ -110,13 +106,13 @@
   
     <td width="50%" valign="top">
       <h3><a href="https://github.com/hongseongug812-ui/debete-arena">debete-arena</a></h3>
-      <p>멀티 에이전트 LLM이 실시간 SSE 스트리밍으로 토론하고 수렴 판단까지 자동화한 AI 의사결정 플랫폼</p>
+      <p><a href="https://github.com/hongseongug812-ui/debete-arena">멀티 에이전트 LLM이 실시간 SSE 스트리밍으로 토론하고 수렴 판단까지 자동화한 AI 의사결정 플랫폼</a></p>
       <p><sub><b>Python</b> · ★ 0 · 포크 0 · 업데이트 2026-04-06</sub></p>
     </td>
   
     <td width="50%" valign="top">
       <h3><a href="https://github.com/hongseongug812-ui/chat2infra">chat2infra</a></h3>
-      <p>비싼 클라우드 엔지니어 없이, 채팅 한 줄로 AWS 서버를 자동 구축하고 관리하는 AI 인프라 비서 서비스입니다</p>
+      <p><a href="https://github.com/hongseongug812-ui/chat2infra">비싼 클라우드 엔지니어 없이, 채팅 한 줄로 AWS 서버를 자동 구축하고 관리하는 AI 인프라 비서 서비스입니다</a></p>
       <p><sub><b>JavaScript</b> · ★ 0 · 포크 0 · 업데이트 2026-04-05</sub></p>
     </td>
   
