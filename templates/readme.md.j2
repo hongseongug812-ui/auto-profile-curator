@@ -92,6 +92,12 @@
 
 ## 사용 언어
 
+{% if skill_icons_query %}
+<div align="center">
+  <img src="https://skillicons.dev/icons?i={{ skill_icons_query }}&theme=dark" alt="사용 언어 아이콘">
+</div>
+
+{% endif %}
 <div align="center">
   <img src="{{ render.language_svg_path }}" width="100%" alt="대표 프로젝트의 언어 분포">
 </div>

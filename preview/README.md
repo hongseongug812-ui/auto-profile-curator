@@ -111,6 +111,10 @@
 ## 사용 언어
 
 <div align="center">
+  <img src="https://skillicons.dev/icons?i=python,js&theme=dark" alt="사용 언어 아이콘">
+</div>
+
+<div align="center">
   <img src="assets/languages.svg" width="100%" alt="대표 프로젝트의 언어 분포">
 </div>
 
@@ -120,10 +124,10 @@
 
 ### 2026
 
-- **hongseongug812-ui** <sub>2026.07</sub> — Python 프로젝트
 - **llm-bench-dashboard** <sub>2026.07</sub> — Python 프로젝트
 - **auto-profile-curator** <sub>2026.07</sub> — GitHub 사용자명 하나로 완성하는 자동 프로필 README 생성 도구
 - **mc-devkit** <sub>2026.07</sub> — JavaScript 프로젝트
+- **ports** <sub>2026.05</sub> — JavaScript 프로젝트
 
 ### 2025
 

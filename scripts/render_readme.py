@@ -105,6 +105,28 @@ def infer_stacks(repositories: list[dict]) -> dict[str, list[str]]:
     }
 
 
+SKILLICON_SLUGS = {
+    "python": "python", "javascript": "js", "typescript": "ts", "java": "java",
+    "kotlin": "kotlin", "go": "go", "rust": "rust", "c": "c", "c++": "cpp",
+    "c#": "cs", "php": "php", "ruby": "ruby", "swift": "swift", "html": "html",
+    "css": "css", "scss": "sass", "shell": "bash", "dart": "dart", "r": "r",
+    "vue": "vue", "scala": "scala", "lua": "lua", "haskell": "haskell",
+    "powershell": "powershell", "objective-c": "objectivec", "perl": "perl",
+    "matlab": "matlab", "elixir": "elixir", "clojure": "clojure",
+    "groovy": "groovy", "coffeescript": "coffeescript", "vim script": "vim",
+    "jupyter notebook": "python", "dockerfile": "docker",
+}
+
+
+def skillicons_query(language_names: list[str]) -> str:
+    slugs = []
+    for name in language_names:
+        slug = SKILLICON_SLUGS.get(name.lower())
+        if slug and slug not in slugs:
+            slugs.append(slug)
+    return ",".join(slugs)
+
+
 def infer_activities(repositories: list[dict], username: str = "") -> list[dict]:
     username = username.lower()
     candidates = sorted(
@@ -180,6 +202,11 @@ def main() -> None:
     for category, values in inferred_stacks.items():
         if not stacks.get(category):
             stacks[category] = values
+    language_names = list(dict.fromkeys(
+        repo["primary_language"]["name"]
+        for repo in repositories
+        if repo.get("primary_language")
+    ))
     rendered = environment.get_template("readme.md.j2").render(
         profile=profile,
         repositories=repositories,
@@ -187,6 +214,7 @@ def main() -> None:
         development_tools=config.get("development_tools", []),
         activities=config.get("activities", []) or infer_activities(all_repositories, profile.get("github_username", "")),
         render=config["render"],
+        skill_icons_query=skillicons_query(language_names),
     )
     Path(args.output).write_text(rendered.rstrip() + "\n", encoding="utf-8")
     cache_path.parent.mkdir(parents=True, exist_ok=True)
