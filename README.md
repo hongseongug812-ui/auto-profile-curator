@@ -59,7 +59,7 @@
   <tr>
     <td width="50%" valign="top">
       <h3><a href="https://github.com/hongseongug812-ui/hongseongug812-ui">hongseongug812-ui</a></h3>
-      <p><a href="https://github.com/hongseongug812-ui/hongseongug812-ui">This repository contains projects demonstrating skills in full-stack development, backend systems, and AI/LLM applications, including tools for automatically curating public repository profiles and benchmarking local large language models.</a></p>
+      <p><a href="https://github.com/hongseongug812-ui/hongseongug812-ui">This repository contains full-stack projects and tools focused on applying AI/LLM techniques for tasks such as automating profile curation, benchmarking local language models, and developing server management systems.</a></p>
       <p><sub><b>Python</b> · ★ 0 · 포크 0 · 업데이트 2026-07-14</sub></p>
     </td>
     <td width="50%" valign="top">
@@ -96,8 +96,8 @@
 
 ### 2026
 
-- **auto-profile-curator** <sub>2026.07</sub> — GitHub 사용자명 하나로 완성하는 자동 프로필 README 생성 도구
 - **hongseongug812-ui** <sub>2026.07</sub> — Python 프로젝트
+- **auto-profile-curator** <sub>2026.07</sub> — GitHub 사용자명 하나로 완성하는 자동 프로필 README 생성 도구
 - **llm-bench-dashboard** <sub>2026.07</sub> — Python 프로젝트
 - **mc-devkit** <sub>2026.07</sub> — JavaScript 프로젝트
 
